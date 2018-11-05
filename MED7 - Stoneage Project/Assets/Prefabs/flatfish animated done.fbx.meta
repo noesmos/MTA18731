@@ -1,0 +1,155 @@
+fileFormatVersion: 2
+guid: a7b9df80b3e8d9c46ab347a3e97ada6b
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: cluster10Handle
+    100002: cluster1Handle
+    100004: cluster3Handle
+    100006: cluster4Handle
+    100008: cluster5Handle
+    100010: cluster6Handle
+    100012: cluster7Handle
+    100014: cluster8Handle
+    100016: curve1
+    100018: //RootNode
+    100020: ikHandle1
+    100022: joint1
+    100024: joint2
+    100026: joint3
+    100028: joint4
+    100030: joint5
+    100032: joint6
+    100034: joint7
+    100036: joint8
+    100038: lower_fin
+    100040: nurbsCircle1
+    100042: nurbsCircle2
+    100044: nurbsCircle3
+    100046: nurbsCircle4
+    100048: nurbsCircle5
+    100050: nurbsCircle6
+    100052: nurbsCircle7
+    100054: nurbsCircle8
+    100056: pCube1
+    100058: sine1Handle
+    100060: upper_fin
+    400000: cluster10Handle
+    400002: cluster1Handle
+    400004: cluster3Handle
+    400006: cluster4Handle
+    400008: cluster5Handle
+    400010: cluster6Handle
+    400012: cluster7Handle
+    400014: cluster8Handle
+    400016: curve1
+    400018: //RootNode
+    400020: ikHandle1
+    400022: joint1
+    400024: joint2
+    400026: joint3
+    400028: joint4
+    400030: joint5
+    400032: joint6
+    400034: joint7
+    400036: joint8
+    400038: lower_fin
+    400040: nurbsCircle1
+    400042: nurbsCircle2
+    400044: nurbsCircle3
+    400046: nurbsCircle4
+    400048: nurbsCircle5
+    400050: nurbsCircle6
+    400052: nurbsCircle7
+    400054: nurbsCircle8
+    400056: pCube1
+    400058: sine1Handle
+    400060: upper_fin
+    2100000: lambert2
+    4300000: pCube1
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: pCube1
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 300
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
