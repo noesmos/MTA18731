@@ -23,7 +23,7 @@ public class playTimer : MonoBehaviour {
 		time =  - Time.deltaTime;
 
 		timeSpent = time/totalPlayTime;
-		Debug.Log(timeSpent);
+		//Debug.Log(timeSpent);
 		currentAngle.x = (timeSpent * startAngle) + ((1-timeSpent)*endAngle);
 		//Debug.Log(currentAngle.x);
 		transform.eulerAngles = currentAngle;

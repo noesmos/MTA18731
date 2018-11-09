@@ -10,6 +10,7 @@ TagManager:
   - boat
   - partner
   - "erteb\xF8lle"
+  - Bounds
   layers:
   - Default
   - TransparentFX

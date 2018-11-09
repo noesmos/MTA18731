@@ -45,8 +45,8 @@ public class EventCatcher : MonoBehaviour {
 		{
 			canFish = false;
 			fishingArea = "";
+			Debug.Log("you are now out of fishing area");
 		}
-		Debug.Log("you are now out of fishing area");
 	}
 
 	public void startFishing(string tool)
