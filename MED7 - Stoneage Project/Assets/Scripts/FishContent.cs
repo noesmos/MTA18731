@@ -27,10 +27,15 @@ public class FishContent : MonoBehaviour {
 			Debug.Log("number of fish after " +fish.Count);
 
 		}
+
+	}
+	public void DestroyEmptyArea()
+	{
 		if(fish.Count == 0)
 		{
 			Debug.Log("destroying the area");
 			Destroy(gameObject);
+			GameManager.singleton.boat.GetComponent<EventCatcher>().ExitArea();
 		}
 	}
 

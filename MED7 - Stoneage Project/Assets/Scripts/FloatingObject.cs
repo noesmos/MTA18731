@@ -15,13 +15,26 @@ public class FloatingObject : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate () {
-		forceFactor = 1.0f - ((transform.position.y - waterLevel) / floatThreshold);
-
-		if (forceFactor > 0.0f)
+		if(Time.time < 7)
 		{
-			floatForce = -Physics.gravity * (forceFactor - GetComponent<Rigidbody>().velocity.y * waterDensity);
-			floatForce += new Vector3(0.0f, -downForce, 0.0f);
-			GetComponent<Rigidbody>().AddForceAtPosition(floatForce, transform.position);
+			forceFactor = 1.0f - ((transform.position.y - waterLevel) / floatThreshold);
+
+			if (forceFactor > 0.0f)
+			{
+				floatForce = -Physics.gravity * (forceFactor - GetComponent<Rigidbody>().velocity.y * waterDensity);
+				floatForce += new Vector3(0.0f, -downForce, 0.0f);
+				GetComponent<Rigidbody>().AddForceAtPosition(floatForce, transform.position);
+			}
 		}
+		else
+		{
+			GetComponent<Rigidbody>().constraints = 
+				RigidbodyConstraints.FreezePositionY | 
+				RigidbodyConstraints.FreezeRotationX | 
+				RigidbodyConstraints.FreezeRotationY | 
+				RigidbodyConstraints.FreezeRotationZ;
+		}
+
+		
 	}
 }
