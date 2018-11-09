@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class EventCatcher : MonoBehaviour {
 
-
-	public GameObject torsk;
-	public GameObject eel;
-
 	bool canFish;
 	string fishingArea;
 
@@ -25,6 +21,7 @@ public class EventCatcher : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
     {
+		//when you enter a fishing area
 		if(other.tag == "TorskArea" || other.tag == "EelArea")
 		{
 			canFish = true;
@@ -32,21 +29,54 @@ public class EventCatcher : MonoBehaviour {
 			fishingAreaObject = other.gameObject;
 			Debug.Log("you are now in the "+fishingArea);
 		}
+		//when you go back to ertebølle midden to retrieve tool
 		if(other.tag == "ertebølle")
 		{
 			GameManager.singleton.hook.GetComponent<SelectTool>().ShowTool();
 			GameManager.singleton.eeliron.GetComponent<SelectTool>().ShowTool();
 		}
+		//when you destroy a basket
+		if(other.tag == "destroyBasket")
+		{
+			other.GetComponent<Basket>().DestroyBasket();
+
+		}
+		//when you enter tribe territory
+		if(other.tag == "tribeTerritory")
+		{
+
+			//partner say something
+		}
+		//when enter torsk territory orca event happens 
+		if(other.tag == "torskTerritory")
+		{
+			//partner says orca thing
+			GameManager.singleton.orca.GetComponent<orcaEvent>().startOrcaEvent();
+		}
     }
 
 	void OnTriggerExit(Collider other)
 	{
+		//when you exit a fishing area, you are set to not be able to fish anymore
 		if(other.tag == "TorskArea" || other.tag == "EelArea")
 		{
+			ExitArea();
+		}
+		//when exit torsk territory pelican event happens 
+		if(other.tag == "torskTerritory")
+		{
+			Debug.Log("YieldInstruction entered");
+			//partner says pelican thing
+		}
+
+	}
+
+	public void ExitArea()
+	{
 			canFish = false;
 			fishingArea = "";
-		}
-		Debug.Log("you are now out of fishing area");
+			Debug.Log("you are now out of fishing area");
+			//partner says there are no more fish here.
 	}
 
 	public void startFishing(string tool)
@@ -58,7 +88,7 @@ public class EventCatcher : MonoBehaviour {
 			{
 				Debug.Log("caugth a torsk");
 				//instatiate a fish in the boay
-				Instantiate(torsk,transform.position, transform.rotation);
+				//Instantiate(torsk,transform.position, transform.rotation);
 				//remove a fish from the ocean
 				fishingAreaObject.GetComponent<FishContent>().RemoveFish();
 			}
@@ -66,7 +96,7 @@ public class EventCatcher : MonoBehaviour {
 			{
 				Debug.Log("caugth a eel");
 				//instatiate a fish in the boay
-				Instantiate(eel,transform.position, transform.rotation);
+				//Instantiate(eel,transform.position, transform.rotation);
 				//remove a fish from the ocean
 				fishingAreaObject.GetComponent<FishContent>().RemoveFish();
 			}
@@ -77,6 +107,14 @@ public class EventCatcher : MonoBehaviour {
 		}
 
 	}
+	public bool GetCanFish()
+	{
+		return canFish;
+	}
 
+	public GameObject GetCurrentFishingArea()
+	{
+		return fishingAreaObject;
+	}
 
 }

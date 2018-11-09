@@ -1,51 +1,47 @@
 fileFormatVersion: 2
-guid: 2d24773e7c0b2f84a9fbf257af622e58
+guid: 339c318735045284d92b909bea8971e6
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: body
-    100002: head
-    100004: left_fin
-    100006: left_fin_tip
-    100008: middleBody
-    100010: Orca
-    100012: //RootNode
-    100014: orcamesh
-    100016: right_fin
-    100018: right_fin_tip
-    100020: sine1Handle
-    100022: tail_body
-    100024: tail_finstart
-    100026: tail_fintip
-    100028: topfin_start
-    100030: topfin_tip
-    400000: body
-    400002: head
-    400004: left_fin
-    400006: left_fin_tip
-    400008: middleBody
-    400010: Orca
-    400012: //RootNode
-    400014: orcamesh
-    400016: right_fin
-    400018: right_fin_tip
-    400020: sine1Handle
-    400022: tail_body
-    400024: tail_finstart
-    400026: tail_fintip
-    400028: topfin_start
-    400030: topfin_tip
-    2100000: orcamat
-    4300000: orcamesh
+    100000: //RootNode
+    100002: joint1
+    100004: joint10
+    100006: joint11
+    100008: joint12
+    100010: joint13
+    100012: joint14
+    100014: joint15
+    100016: joint16
+    100018: joint2
+    100020: joint3
+    100022: joint4
+    100024: joint5
+    100026: joint6
+    100028: joint7
+    100030: joint8
+    100032: joint9
+    100034: pCylinder2
+    400000: //RootNode
+    400002: joint1
+    400004: joint10
+    400006: joint11
+    400008: joint12
+    400010: joint13
+    400012: joint14
+    400014: joint15
+    400016: joint16
+    400018: joint2
+    400020: joint3
+    400022: joint4
+    400024: joint5
+    400026: joint6
+    400028: joint7
+    400030: joint8
+    400032: joint9
+    400034: pCylinder2
     7400000: Take 001
     9500000: //RootNode
-    13700000: orcamesh
-  externalObjects:
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: residentkillerwhale_orcinus_orca
-    second: {fileID: 2800000, guid: c40334946cfa05d40bccd66fa1210655, type: 3}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -76,7 +72,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 50
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -96,7 +92,7 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.5
+    previousCalculatedGlobalScale: 0.01
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60

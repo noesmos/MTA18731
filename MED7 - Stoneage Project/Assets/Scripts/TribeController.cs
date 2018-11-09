@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent (typeof (FloatingObject))]
-public class BoatControllerScript : MonoBehaviour {
+public class TribeController : MonoBehaviour {
 
 	public float speed = 0.2f;
 	public float rotationSpeed = 160f;
@@ -12,11 +11,23 @@ public class BoatControllerScript : MonoBehaviour {
 	float horizontalInput;
 	float steerFactor;
 	
+	GameObject playerBoat;
+
+	Vector3 steerDirection = new Vector3(0,0,0);
+	bool followPlayer = false;
+
+	void Start()
+	{
+		playerBoat = GameManager.singleton.boat;
+	}
+
 	// Update is called once per frame
 	void Update () {
-		Movement();
-		TestSteer();
+		//Movement();
+		//TestSteer();
 
+		steerDirection = playerBoat.transform.position - transform.position;
+		//Debug.DrawRay(transform.position,steerDirection, Color.red, 10);
 		BoatMovement();
 	}
 
@@ -35,21 +46,22 @@ public class BoatControllerScript : MonoBehaviour {
 	}
 
 	public void BoatMovement () {
-		if(Input.GetButtonDown("Fire1"))
-		{
-			GameManager.singleton.partner.GetComponent<PartnerAnimator>().StartPaddleAnimation();
-		}
-		else if(Input.GetButton("Fire1"))
+
+		if(followPlayer)
 		{
 
 			GetComponent<Rigidbody>().AddForce(transform.forward * speed * Mathf.Abs(Mathf.Sin(Time.realtimeSinceStartup * 1.0f)));
 
-			if (Vector3.Angle(transform.forward, Camera.main.transform.forward) > 10)
+			if (Vector3.Angle(steerDirection, Camera.main.transform.forward) > 10)
+			//if (Vector3.Angle(transform.forward, Camera.main.transform.forward) > 10)
+			//if (Vector3.Angle(transform.forward, steerDirection) > 10)
 			{
 				// The step size is equal to speed times frame time.
 				float step = rotationSpeed * Time.deltaTime;
 
-				Vector3 newDir = Vector3.RotateTowards(transform.forward, new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z), step, 0.0f);
+				//Vector3 newDir = Vector3.RotateTowards(transform.forward, new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z), step, 0.0f);
+				//Vector3 newDir = Vector3.RotateTowards(steerDirection, new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z), step, 0.0f);
+				Vector3 newDir = Vector3.RotateTowards(transform.forward, new Vector3(steerDirection.x, 0, steerDirection.z), step, 0.0f);
 				
 				// calculate the Quaternion for the rotation
 				Quaternion rot = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(newDir), rotationSpeed * Time.deltaTime);
@@ -59,9 +71,11 @@ public class BoatControllerScript : MonoBehaviour {
 			}
 			//Debug.Log(Vector3.Angle(transform.forward, Camera.main.transform.forward));
 		}
-		else if(Input.GetButtonUp("Fire1"))
-		{
-			GameManager.singleton.partner.GetComponent<PartnerAnimator>().StopPaddleAnimation();
-		}
+
+	}
+
+	public void SetFollowPlayer(bool input)
+	{
+		followPlayer = input;
 	}
 }

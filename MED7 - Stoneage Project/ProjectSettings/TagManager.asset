@@ -10,6 +10,12 @@ TagManager:
   - boat
   - partner
   - "erteb\xF8lle"
+  - destroyBasket
+  - emptyBasket
+  - tribeTerritory
+  - tribeBoat
+  - torskTerritory
+  - orca
   layers:
   - Default
   - TransparentFX

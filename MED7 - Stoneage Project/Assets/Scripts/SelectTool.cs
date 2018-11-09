@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SelectTool : MonoBehaviour {
 
+public bool IsTribeBasket;
+
 EventCatcher EC;
 PartnerAnimator PA;
 
@@ -29,9 +31,9 @@ PartnerAnimator PA;
 			tool = tag;
 			//play animation
 			HideTool();
-			PA.hookAnimation();
+			PA.HookAnimation();
 			//wait for animaion to end to show tool again
-			ShowTool();
+			//ShowTool();
 
 			//StartCoroutine("OnAnimationComplete");
 
@@ -42,14 +44,28 @@ PartnerAnimator PA;
 			tool = tag;
 			//play animation
 			HideTool();
-			PA.eelironAnimation();
+			PA.EelironAnimation();
 			
 			//wait for animaion to end to show tool again
-			ShowTool();
+			//ShowTool();
 			
 		}
 		//admit to fish with the selected tool
 		EC.startFishing(tool);
+	}
+
+	public void EmptyBasket()
+	{
+		if(tag =="emptyBasket")
+		{
+			PA.BasketAnimation();
+			Debug.Log("emptying basket");
+
+			if(IsTribeBasket)
+			{
+				GameManager.singleton.tribeBoat.GetComponent<TribeController>().SetFollowPlayer(true);
+			}
+		}
 	}
 
 	void HideTool()
@@ -65,19 +81,5 @@ PartnerAnimator PA;
 		GetComponent<Collider>().enabled = true;
 		GetComponentInChildren<MeshRenderer>().enabled = true;
 	}
-
-IEnumerator OnAnimationComplete()
-{
-    while(!(PA.anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f))
-	{
-        Debug.Log("animation playing");
-		yield return null;
-
-
-	}
-	Debug.Log(PA.anim.GetCurrentAnimatorStateInfo(0).speed);
-	Debug.Log("animation is done");
-    ShowTool();
-}
 
 }
