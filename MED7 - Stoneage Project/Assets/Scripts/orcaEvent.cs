@@ -53,19 +53,10 @@ public class orcaEvent : MonoBehaviour {
 		}
 		
     }
-
     public void startOrcaEvent()
 	{
 		orcaMoving = true;
 		velocity = velocitySpeed;
 	}
-    public void MovePlatform()
-    {
-        if (transform.position == start.transform.position)
-        {
-            t = 0;
-            velocity = velocitySpeed;
-        }
-    }
 }
 

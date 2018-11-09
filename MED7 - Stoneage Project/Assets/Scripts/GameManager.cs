@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour {
         }
         public void AddFlatFish(GameObject flat)
         {
-            caughtEel.Add(flat);
+            caughtFlatfish.Add(flat);
             AccumulateFish();
         }
 

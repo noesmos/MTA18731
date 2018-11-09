@@ -64,6 +64,7 @@ PartnerAnimator PA;
 			if(IsTribeBasket)
 			{
 				GameManager.singleton.tribeBoat.GetComponent<TribeController>().SetFollowPlayer(true);
+				
 			}
 		}
 	}

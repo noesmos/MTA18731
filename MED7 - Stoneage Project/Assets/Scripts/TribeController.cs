@@ -77,5 +77,6 @@ public class TribeController : MonoBehaviour {
 	public void SetFollowPlayer(bool input)
 	{
 		followPlayer = input;
+		//partner says something, warn you that you should return fish
 	}
 }

@@ -21,6 +21,7 @@ public class FishContent : MonoBehaviour {
 	{
 		if(fish.Count >0)
 		{
+			//Debug.Break();
 			Debug.Log("number of fish before " +fish.Count);
 			Destroy(fish[0].gameObject);
 			fish.RemoveAt(0);
