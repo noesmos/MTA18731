@@ -11,6 +11,14 @@ TagManager:
   - partner
   - "erteb\xF8lle"
   - Bounds
+  - torskTerritory
+  - destroyBasket
+  - tribeTerritory
+  - emptyBasket
+  - orca
+  - tribeBoat
+  - tribeTrigger
+  - flyingPelican
   layers:
   - Default
   - TransparentFX

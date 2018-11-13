@@ -13,12 +13,14 @@ public class GameManager : MonoBehaviour {
         public GameObject eeliron;
         public GameObject orca;
 
+        public GameObject PelicanEvent;
+        
         //prefabs
         public GameObject torsk;
 	    public GameObject eel;
 	    public GameObject flatFish;
-
-
+        public GameObject flint;
+        public GameObject tradingObject;
 
 
         List<GameObject> caughtTotal = new List<GameObject>();
@@ -59,6 +61,9 @@ public class GameManager : MonoBehaviour {
             Debug.Log(eeliron.gameObject.name);
             orca = GameObject.FindGameObjectWithTag("orca");
             Debug.Log(orca.gameObject.name);
+            PelicanEvent = GameObject.FindGameObjectWithTag("flyingPelican");
+            Debug.Log(PelicanEvent.gameObject.name);
+            PelicanEvent.SetActive(false);
         } 
         
         //Update is called every frame.
@@ -69,35 +74,47 @@ public class GameManager : MonoBehaviour {
 
         public void AddEel(GameObject eel)
         {
-            caughtEel.Add(eel);
+            //caughtEel.Add(eel);
+            caughtTotal.Add(eel);
             AccumulateFish();
         }
         public void AddTorsk(GameObject torsk)
         {
-            caughtTorsk.Add(torsk);
+            //caughtTorsk.Add(torsk);
+            caughtTotal.Add(torsk);
             AccumulateFish();
         }
         public void AddFlatFish(GameObject flat)
         {
-            caughtFlatfish.Add(flat);
+            //caughtFlatfish.Add(flat);
+            caughtTotal.Add(flat);
             AccumulateFish();
         }
 
         public void AccumulateFish()
         {
-            caughtTotal.Clear();
-            caughtTotal.AddRange(caughtEel);
-            caughtTotal.AddRange(caughtTorsk);
-            caughtTotal.AddRange(caughtFlatfish);
+            //commented out for debugging
+            //caughtTotal.Clear();
+            //caughtTotal.AddRange(caughtEel);
+            //caughtTotal.AddRange(caughtTorsk);
+            //caughtTotal.AddRange(caughtFlatfish);
+        }
+
+        public int GetFishCount()
+        {
+            return caughtTotal.Count;
         }
 
         //not sure about this one
         public void RemoveAnyFish(int amount)
         {
-            for (int i = 0; i >amount; i++) 
+            Debug.Log("entered");
+            for (int i = 0; i < amount; i++) 
             {
+                Debug.Log(caughtTotal[0].gameObject.name + " is deleted. there are now " +caughtTotal.Count + " fish");
                 Destroy(caughtTotal[0].gameObject);
 			    caughtTotal.RemoveAt(0);
+
             }
         }
         public void RemoveEels(int amount)
@@ -106,8 +123,8 @@ public class GameManager : MonoBehaviour {
             {
                 try
                 {
-                Destroy(caughtTotal[0].gameObject);
-			    caughtTotal.RemoveAt(0);
+                Destroy(caughtFlatfish[0].gameObject);
+			    caughtFlatfish.RemoveAt(0);
                 }
                 catch
                 {

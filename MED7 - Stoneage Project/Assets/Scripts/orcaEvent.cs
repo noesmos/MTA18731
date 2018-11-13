@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class orcaEvent : MonoBehaviour {
 
+
+
+	public bool IsOrca;
+
 	public GameObject start, middle, end;
 
     public float t = 0.0f, velocitySpeed = 0.2f;
@@ -28,11 +32,18 @@ public class orcaEvent : MonoBehaviour {
 		{
 		
 			t += velocity * Time.deltaTime;
-       		if (t > 1.0)
+       		if (t > 1.0 && IsOrca)
         	{
             	t = 0.0f;
             	velocity = 0;
+
         	}
+			else if(t>2.5 && !IsOrca)
+			{
+				t = 0.0f;
+            	velocity = 0;
+				transform.parent.gameObject.SetActive(false);
+			}
         	else
         	{
 				newPos =                 	
@@ -44,7 +55,14 @@ public class orcaEvent : MonoBehaviour {
 				//Debug.Log(newPos);
 				//Debug.DrawRay(transform.position, (newPos-transform.position)*100, Color.red, 1);
 				forwardRotation = newPos-transform.position;
-				transform.right = forwardRotation;
+				if(IsOrca)
+				{
+					transform.right = forwardRotation;
+				}
+				else
+				{
+					transform.forward = -forwardRotation;
+				}
             	transform.position = newPos;
 
         	}
@@ -53,6 +71,12 @@ public class orcaEvent : MonoBehaviour {
 		}
 		
     }
+
+	public void StartPelicanEvent()
+	{
+
+	} 
+
     public void startOrcaEvent()
 	{
 		orcaMoving = true;

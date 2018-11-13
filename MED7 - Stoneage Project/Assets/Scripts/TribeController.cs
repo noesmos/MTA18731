@@ -12,21 +12,47 @@ public class TribeController : MonoBehaviour {
 	float steerFactor;
 	
 	GameObject playerBoat;
+	Vector3 playerPos;
+
+	Vector3 leftSideOfBoat;
+	Vector3 rightSideOfBoat;
+	float distance2left;
+	float distance2right;
+
 
 	Vector3 steerDirection = new Vector3(0,0,0);
 	bool followPlayer = false;
 
+	GameObject tribeTrigger;
+
 	void Start()
 	{
 		playerBoat = GameManager.singleton.boat;
+		tribeTrigger = GameObject.FindGameObjectWithTag("tribeTrigger");
 	}
 
 	// Update is called once per frame
 	void Update () {
 		//Movement();
 		//TestSteer();
+		playerPos = playerBoat.transform.position;
 
-		steerDirection = playerBoat.transform.position - transform.position;
+		leftSideOfBoat  = new Vector3(playerPos.x-5,playerPos.y,playerPos.z);
+		rightSideOfBoat = new Vector3(playerPos.x+5,playerPos.y,playerPos.z);
+
+		//GetComponentInChildren<Transform>().rotation=playerBoat.transform.rotation;
+
+		distance2left=Vector3.Distance(leftSideOfBoat, transform.position);
+		distance2left=Vector3.Distance(rightSideOfBoat, transform.position);
+
+		if(distance2left<distance2right)
+		{
+			steerDirection = leftSideOfBoat - transform.position;
+		}
+		else
+		{
+			steerDirection = rightSideOfBoat - transform.position;
+		}
 		//Debug.DrawRay(transform.position,steerDirection, Color.red, 10);
 		BoatMovement();
 	}
@@ -76,7 +102,10 @@ public class TribeController : MonoBehaviour {
 
 	public void SetFollowPlayer(bool input)
 	{
+		Debug.Log("setting follow player to "+input);
 		followPlayer = input;
+		tribeTrigger.GetComponent<Collider>().enabled = input;
+		GameManager.singleton.tradingObject.GetComponent<Collider>().enabled=false;
 		//partner says something, warn you that you should return fish
 	}
 }

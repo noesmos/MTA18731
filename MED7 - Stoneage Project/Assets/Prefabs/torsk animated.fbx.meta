@@ -34,7 +34,12 @@ ModelImporter:
     7400000: Take 001
     9500000: //RootNode
     13700000: pCube2
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: UV torsk new
+    second: {fileID: 2800000, guid: 5a337c1f4435531439eb577783b480b0, type: 3}
   materials:
     importMaterials: 1
     materialName: 0
@@ -85,7 +90,7 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.08
+    previousCalculatedGlobalScale: 0.07
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60

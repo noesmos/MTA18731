@@ -57,6 +57,14 @@ public class EventCatcher : MonoBehaviour {
             //partner says orca thing
             GameManager.singleton.orca.GetComponent<orcaEvent>().startOrcaEvent();
         }
+		//when the tribe is chasing you to get fish back
+		if(other.tag == "tribeTrigger")
+		{
+			//stop following
+			GameManager.singleton.tribeBoat.GetComponent<TribeController>().SetFollowPlayer(false);
+			//remove fish
+			GameManager.singleton.RemoveAnyFish(5);
+		}
 
     }
 
@@ -70,9 +78,12 @@ public class EventCatcher : MonoBehaviour {
         //when exit torsk territory pelican event happens 
         if(other.tag == "torskTerritory")
         {
-            Debug.Log("YieldInstruction entered");
+            GameManager.singleton.PelicanEvent.SetActive(true);
+			GameManager.singleton.PelicanEvent.transform.SetParent(null);
+			GameManager.singleton.PelicanEvent.GetComponentInChildren<orcaEvent>().startOrcaEvent();
             //partner says pelican thing
         }
+
 
     }
 
@@ -109,9 +120,29 @@ public class EventCatcher : MonoBehaviour {
 			{
 				//partner should make a comment
 			}
+			
 		}
 
 	}
+
+
+	public void DisableTrading()
+	{
+		GameManager.singleton.tradingObject.GetComponent<Collider>().enabled = false;
+	}
+
+	public void TradeFishForFlint()
+	{
+		Debug.Log("you want to trade");
+		if(GameManager.singleton.GetFishCount() >= 5)
+		{
+			Debug.Log("You have enough fish");
+			GameManager.singleton.RemoveAnyFish(5);
+			Instantiate(GameManager.singleton.flint,transform.position+ new Vector3(0,2,0), transform.rotation, transform);
+		}
+		DisableTrading();
+	}
+
 	public bool GetCanFish()
     {
         return canFish;
