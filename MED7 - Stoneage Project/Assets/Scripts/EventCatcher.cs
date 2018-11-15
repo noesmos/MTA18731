@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EventCatcher : MonoBehaviour {
 
-
+	
 	public GameObject torsk;
 	public GameObject eel;
 
@@ -25,6 +25,10 @@ public class EventCatcher : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
     {
+		if(other.tag == "pillar1" ||other.tag == "pillar2" ||other.tag == "pillar3"||other.tag == "pillar4"||other.tag == "pillar5")
+		{
+			other.gameObject.SetActive(false);
+		}
 		//when you enter a fishing area
 		if(other.tag == "TorskArea" || other.tag == "EelArea")
 		{
@@ -78,7 +82,7 @@ public class EventCatcher : MonoBehaviour {
         //when exit torsk territory pelican event happens 
         if(other.tag == "torskTerritory")
         {
-            GameManager.singleton.PelicanEvent.SetActive(true);
+			GameManager.singleton.PelicanEvent.SetActive(true);
 			GameManager.singleton.PelicanEvent.transform.SetParent(null);
 			GameManager.singleton.PelicanEvent.GetComponentInChildren<orcaEvent>().startOrcaEvent();
             //partner says pelican thing

@@ -7,6 +7,7 @@ public class TribeController : MonoBehaviour {
 	public float speed = 0.2f;
 	public float rotationSpeed = 160f;
 
+	public GameObject pillar;
 	float verticalInput;
 	float horizontalInput;
 	float steerFactor;
@@ -22,6 +23,7 @@ public class TribeController : MonoBehaviour {
 
 	Vector3 steerDirection = new Vector3(0,0,0);
 	bool followPlayer = false;
+	public bool toPosition = false;
 
 	GameObject tribeTrigger;
 
@@ -45,7 +47,11 @@ public class TribeController : MonoBehaviour {
 		distance2left=Vector3.Distance(leftSideOfBoat, transform.position);
 		distance2left=Vector3.Distance(rightSideOfBoat, transform.position);
 
-		if(distance2left<distance2right)
+		if(toPosition)
+		{
+			steerDirection = pillar.transform.position - transform.position;
+		}
+		else if(distance2left<distance2right)
 		{
 			steerDirection = leftSideOfBoat - transform.position;
 		}
@@ -73,8 +79,13 @@ public class TribeController : MonoBehaviour {
 
 	public void BoatMovement () {
 
-		if(followPlayer)
+		if(followPlayer || toPosition)
 		{
+			Debug.Log(Vector3.Distance(pillar.transform.position, transform.position));
+			if(Vector3.Distance(new Vector3(pillar.transform.position.x, 0, pillar.transform.position.z), transform.position)<15)
+			{
+				toPosition = false;
+			}
 
 			GetComponent<Rigidbody>().AddForce(transform.forward * speed * Mathf.Abs(Mathf.Sin(Time.realtimeSinceStartup * 1.0f)));
 
@@ -97,6 +108,11 @@ public class TribeController : MonoBehaviour {
 			}
 			//Debug.Log(Vector3.Angle(transform.forward, Camera.main.transform.forward));
 		}
+
+	}
+
+	public void GetInPosition()
+	{
 
 	}
 

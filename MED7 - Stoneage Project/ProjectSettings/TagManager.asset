@@ -19,6 +19,12 @@ TagManager:
   - tribeBoat
   - tribeTrigger
   - flyingPelican
+  - pillar2
+  - pillar1
+  - pillar3
+  - pillar4
+  - pillar5
+  - eelTerritory
   layers:
   - Default
   - TransparentFX

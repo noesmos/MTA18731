@@ -8,6 +8,8 @@ public class orcaEvent : MonoBehaviour {
 
 	public bool IsOrca;
 
+	bool hasHappening;
+
 	public GameObject start, middle, end;
 
     public float t = 0.0f, velocitySpeed = 0.2f;
@@ -36,13 +38,16 @@ public class orcaEvent : MonoBehaviour {
         	{
             	t = 0.0f;
             	velocity = 0;
+				hasHappening=true;
 
         	}
 			else if(t>2.5 && !IsOrca)
 			{
-				t = 0.0f;
+				t = 5.0f;
             	velocity = 0;
 				transform.parent.gameObject.SetActive(false);
+				hasHappening=true;
+				//GameManager.singleton.PelicanEvent.SetActive(true);
 			}
         	else
         	{
@@ -79,8 +84,13 @@ public class orcaEvent : MonoBehaviour {
 
     public void startOrcaEvent()
 	{
-		orcaMoving = true;
-		velocity = velocitySpeed;
+		if(!hasHappening)
+		{
+
+			orcaMoving = true;
+			velocity = velocitySpeed;	
+		}
+
 	}
 }
 

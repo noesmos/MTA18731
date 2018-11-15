@@ -29,6 +29,15 @@ public class GameManager : MonoBehaviour {
         List<GameObject> caughtFlatfish =new List<GameObject>();
 
 
+        //linear stuff
+
+        public bool Islinear;
+        public List<GameObject> torskArea, eelArea = new List<GameObject>();
+        public GameObject trading;
+        public GameObject pillar1,pillar2,pillar3,pillar4,pillar5;
+        public GameObject torskTerritory, torskTerritory2, eelTerritory, tribeTerritory;
+        public GameObject basket,tribeBasket;
+        public GameObject midden;
 
 
         //Awake is always called before any Start functions
@@ -50,20 +59,50 @@ public class GameManager : MonoBehaviour {
             DontDestroyOnLoad(gameObject);
 
             boat = GameObject.FindGameObjectWithTag("boat");
-            Debug.Log(boat.gameObject.name);
+            //Debug.Log(boat.gameObject.name);            
             tribeBoat = GameObject.FindGameObjectWithTag("tribeBoat");
-            Debug.Log(tribeBoat.gameObject.name);
+            //Debug.Log(tribeBoat.gameObject.name);
             partner = GameObject.FindGameObjectWithTag("partner");
-            Debug.Log(partner.gameObject.name);
+            //Debug.Log(partner.gameObject.name);
             hook = GameObject.FindGameObjectWithTag("hook");
-            Debug.Log(hook.gameObject.name);
+            //Debug.Log(hook.gameObject.name);
             eeliron = GameObject.FindGameObjectWithTag("eeliron");
-            Debug.Log(eeliron.gameObject.name);
+            //Debug.Log(eeliron.gameObject.name);
             orca = GameObject.FindGameObjectWithTag("orca");
-            Debug.Log(orca.gameObject.name);
+            //Debug.Log(orca.gameObject.name);
             PelicanEvent = GameObject.FindGameObjectWithTag("flyingPelican");
-            Debug.Log(PelicanEvent.gameObject.name);
+            //Debug.Log(PelicanEvent.gameObject.name);
             PelicanEvent.SetActive(false);
+
+
+            //linear stuff!
+            if(Islinear)
+            {
+                //disable the collider on following game objects
+                foreach(GameObject area in torskArea)
+                {
+                    area.GetComponent<Collider>().enabled = false;
+                }
+                foreach(GameObject area in eelArea)
+                {
+                    area.GetComponent<Collider>().enabled = false;
+                }
+                torskTerritory.GetComponent<Collider>().enabled = false;
+                torskTerritory2.GetComponent<Collider>().enabled = false;
+                eelTerritory.GetComponent<Collider>().enabled = false;
+                tribeTerritory.GetComponent<Collider>().enabled = false;
+                midden.GetComponent<Collider>().enabled = false;
+                basket.GetComponent<Collider>().enabled = false;
+                tribeBasket.GetComponent<Collider>().enabled = false;
+
+                //totally disable the following game objects
+                pillar1.SetActive(false);
+                pillar2.SetActive(false);
+                pillar3.SetActive(false);
+                pillar4.SetActive(false);
+                pillar5.SetActive(false);
+                tribeBasket.SetActive(false);
+            }
         } 
         
         //Update is called every frame.

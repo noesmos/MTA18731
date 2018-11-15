@@ -74,6 +74,8 @@ public class PartnerAnimator : MonoBehaviour {
 			//PutEelInBasket();
 			PutFlatFishInBasket();
 		}
+		Debug.Log("tell player to go to torsk");
+		GetComponent<PartnerSpeech>().PartnerSaysSomething(GetComponent<PartnerSpeech>().GoToTorsk, "Go To Torsk");
 
 	}
 	public void PutFlatFishInBasket()
