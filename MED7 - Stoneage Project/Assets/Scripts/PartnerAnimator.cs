@@ -25,16 +25,26 @@ public class PartnerAnimator : MonoBehaviour {
 
 	public void HookAnimation()
 	{
-		anim.SetTrigger("hook");
+		anim.SetTrigger("hookFishing");
 	}
 	public void EelironAnimation()
 	{
-		anim.SetTrigger("eelIron");
+		anim.SetTrigger("eelIronFishing");
 	}
 
 	public void BasketAnimation()
 	{
-		anim.SetTrigger("basket");
+		anim.SetTrigger("basketFishing");
+	}
+
+	public void trapEmpty()
+	{
+		anim.SetTrigger("trapEmpty");
+	}
+
+	public void trapFull()
+	{
+		anim.SetTrigger("trapFull");
 	}
 
 
@@ -68,14 +78,22 @@ public class PartnerAnimator : MonoBehaviour {
 
 	}
 	public void BasketAniDone(){
-		for(int i =0; i < 5; i++)
+		bool basketFull = true;
+		
+		if (basketFull)
 		{
-			Debug.Log("putting fish in basket");
-			//PutEelInBasket();
-			PutFlatFishInBasket();
+			trapFull();
+			for(int i =0; i < 5; i++)
+			{
+				Debug.Log("putting fish in basket");
+				//PutEelInBasket();
+				PutFlatFishInBasket();
+			}
+			Debug.Log("Trap Full");
+		} else {
+			trapEmpty();
+			Debug.Log("Trap Empty");
 		}
-		Debug.Log("tell player to go to torsk");
-		GetComponent<PartnerSpeech>().PartnerSaysSomething(GetComponent<PartnerSpeech>().GoToTorsk, "Go To Torsk");
 
 	}
 	public void PutFlatFishInBasket()
