@@ -60,7 +60,7 @@ PartnerAnimator PA;
 		{
 			PA.BasketAnimation();
 			Debug.Log("emptying basket");
-
+			GetComponent<Collider>().enabled=false;
 			if(IsTribeBasket)
 			{
 				GameManager.singleton.tribeBoat.GetComponent<TribeController>().SetFollowPlayer(true);

@@ -81,7 +81,7 @@ public class TribeController : MonoBehaviour {
 
 		if(followPlayer || toPosition)
 		{
-			Debug.Log(Vector3.Distance(pillar.transform.position, transform.position));
+			//Debug.Log(Vector3.Distance(pillar.transform.position, transform.position));
 			if(Vector3.Distance(new Vector3(pillar.transform.position.x, 0, pillar.transform.position.z), transform.position)<15)
 			{
 				toPosition = false;
@@ -113,7 +113,7 @@ public class TribeController : MonoBehaviour {
 
 	public void GetInPosition()
 	{
-
+		toPosition=true;
 	}
 
 	public void SetFollowPlayer(bool input)

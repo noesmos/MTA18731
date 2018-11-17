@@ -30,6 +30,13 @@ public class GameManager : MonoBehaviour {
 
 
         //linear stuff
+        bool isCountingTorsk = false;
+        int startTorskAmount;
+        int currentTorskAmount=0;
+        bool isCountingEel = false;
+        int startEelAmount;
+        int currentEelAmount=0;
+
 
         public bool Islinear;
         public List<GameObject> torskArea, eelArea = new List<GameObject>();
@@ -81,11 +88,11 @@ public class GameManager : MonoBehaviour {
                 //disable the collider on following game objects
                 foreach(GameObject area in torskArea)
                 {
-                    area.GetComponent<Collider>().enabled = false;
+                    area.SetActive(false);
                 }
                 foreach(GameObject area in eelArea)
                 {
-                    area.GetComponent<Collider>().enabled = false;
+                    area.SetActive(false);
                 }
                 torskTerritory.GetComponent<Collider>().enabled = false;
                 torskTerritory2.GetComponent<Collider>().enabled = false;
@@ -115,13 +122,36 @@ public class GameManager : MonoBehaviour {
         {
             //caughtEel.Add(eel);
             caughtTotal.Add(eel);
+            currentEelAmount++; 
+            Debug.Log("caught a eel. now we have "+currentEelAmount);
             AccumulateFish();
+            if(isCountingEel)
+            {
+                Debug.Log("checking for eel caught: " +(currentEelAmount-startEelAmount));
+                
+                if(currentEelAmount-startEelAmount>=3)
+                {
+                    partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(partner.GetComponent<PartnerSpeech>().GoToMidden, "Lad os tage hjem igen");
+                }
+            }
+
         }
         public void AddTorsk(GameObject torsk)
         {
             //caughtTorsk.Add(torsk);
             caughtTotal.Add(torsk);
+            currentTorskAmount++;
+            Debug.Log("caught a torsk. now we have "+currentTorskAmount);
             AccumulateFish();
+            if(isCountingTorsk)
+            {
+                Debug.Log("checking for torsk caught");
+                if(currentTorskAmount-startTorskAmount>=3)
+                {
+
+                    partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(partner.GetComponent<PartnerSpeech>().GoToTribe, "Lad os Bytte nogen fisk for flint");
+                }
+            }
         }
         public void AddFlatFish(GameObject flat)
         {
@@ -173,5 +203,16 @@ public class GameManager : MonoBehaviour {
             }
             AccumulateFish();
         }
-
+        public void StartCountingTorsk()
+        {
+            Debug.Log("we are counting torsk");
+            isCountingTorsk=true;
+            startTorskAmount = currentTorskAmount;
+        } 
+        public void StartCountingEel()
+        {
+            Debug.Log("we are counting eel");
+            isCountingEel=true;
+            startEelAmount = currentEelAmount;
+        } 
 }

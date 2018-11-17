@@ -143,6 +143,10 @@ public class EventCatcher : MonoBehaviour {
 			Debug.Log("You have enough fish");
 			GameManager.singleton.RemoveAnyFish(5);
 			Instantiate(GameManager.singleton.flint,transform.position+ new Vector3(0,2,0), transform.rotation, transform);
+			if(GameManager.singleton.Islinear)
+			{
+				GameManager.singleton.partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(GameManager.singleton.partner.GetComponent<PartnerSpeech>().GoToEel, "lLd os se om der er nogen flere ål i dag");
+			}
 		}
 		DisableTrading();
 	}

@@ -47,6 +47,21 @@ public class PartnerAnimator : MonoBehaviour {
 		anim.SetTrigger("trapFull");
 	}
 
+	public void codCaught()
+	{
+		anim.SetTrigger("codCaught");
+	}
+
+	public void eelCaught()
+	{
+		anim.SetTrigger("eelCaught");
+	}
+
+	public void noCatch()
+	{
+		anim.SetTrigger("noCatch");
+	}
+
 
 	public void StartPaddleAnimation(){
 		anim.SetBool("isPaddling", true);
@@ -60,8 +75,12 @@ public class PartnerAnimator : MonoBehaviour {
 		Debug.Log("Hook ani done");
 		if(GameManager.singleton.boat.GetComponent<EventCatcher>().GetCanFish())
 		{
-			PutTorskInBasket();
+			codCaught();
+			PutTorskInBasket();	
+		} else {
+			noCatch();
 		}
+
 		//check if there is more fish in the area
 		GameManager.singleton.boat.GetComponent<EventCatcher>().GetCurrentFishingArea().GetComponent<FishContent>().DestroyEmptyArea();
 	}
@@ -72,8 +91,12 @@ public class PartnerAnimator : MonoBehaviour {
 		Debug.Log("iron ani done");
 		if(GameManager.singleton.boat.GetComponent<EventCatcher>().GetCanFish())
 		{
+			eelCaught();
 			PutEelInBasket();
+		} else {
+			noCatch();
 		}
+
 		GameManager.singleton.boat.GetComponent<EventCatcher>().GetCurrentFishingArea().GetComponent<FishContent>().DestroyEmptyArea();
 
 	}
@@ -88,6 +111,10 @@ public class PartnerAnimator : MonoBehaviour {
 				Debug.Log("putting fish in basket");
 				//PutEelInBasket();
 				PutFlatFishInBasket();
+			}
+			if(GameManager.singleton.Islinear)
+			{
+				GetComponent<PartnerSpeech>().PartnerSaysSomething(GetComponent<PartnerSpeech>().GoToTorsk, " Lad os fange tre torsk");
 			}
 			Debug.Log("Trap Full");
 		} else {

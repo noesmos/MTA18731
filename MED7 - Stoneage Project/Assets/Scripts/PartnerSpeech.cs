@@ -39,10 +39,14 @@ public class PartnerSpeech : MonoBehaviour {
 			{
 				GameManager.singleton.pillar2.SetActive(true);
 				GameManager.singleton.pillar1.SetActive(false);
+				//Destroy(GameManager.singleton.pillar1);
+				Debug.Log("pillar1 is now "+GameManager.singleton.pillar1.activeSelf);
 				GameManager.singleton.torskTerritory.GetComponent<Collider>().enabled = true;
+				GameManager.singleton.StartCountingTorsk();
 				foreach(GameObject area in GameManager.singleton.torskArea)
 				{
-					area.GetComponent<Collider>().enabled = true;
+					Debug.Log("activating area");
+					area.SetActive(true);
 				}
 				//start counting Cod
 			}
@@ -50,18 +54,23 @@ public class PartnerSpeech : MonoBehaviour {
 			{
 				GameManager.singleton.pillar3.SetActive(true);
 				GameManager.singleton.pillar2.SetActive(false);
+				Debug.Log("pillar2 is now "+GameManager.singleton.pillar2.activeSelf);
 				GameManager.singleton.trading.GetComponent<Collider>().enabled = true;
 				GameManager.singleton.torskTerritory.GetComponent<Collider>().enabled = false;
-				GameManager.singleton.torskTerritory2.GetComponent<Collider>().enabled = true;
+
 			}
 			else if(audio.clip.name == "GoToEel")
 			{
+				Debug.Log("eel event happening");
 				GameManager.singleton.pillar4.SetActive(true);
 				GameManager.singleton.pillar3.SetActive(false);
+				Debug.Log("pillar3 is now "+GameManager.singleton.pillar3.activeSelf);
 				GameManager.singleton.eelTerritory.GetComponent<Collider>().enabled = true;
+				GameManager.singleton.torskTerritory2.GetComponent<Collider>().enabled = true;
+				GameManager.singleton.StartCountingEel();
 				foreach(GameObject area in GameManager.singleton.eelArea)
 				{
-					area.GetComponent<Collider>().enabled = true;
+					area.SetActive(true);
 				}
 				//start counting eel
 			}
@@ -69,6 +78,7 @@ public class PartnerSpeech : MonoBehaviour {
 			{
 				GameManager.singleton.pillar5.SetActive(true);
 				GameManager.singleton.pillar4.SetActive(false);
+				Debug.Log("pillar4 is now "+GameManager.singleton.pillar4.activeSelf);
 				GameManager.singleton.midden.GetComponent<Collider>().enabled = true;
 			}
         }

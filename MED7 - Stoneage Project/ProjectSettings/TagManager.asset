@@ -25,6 +25,7 @@ TagManager:
   - pillar4
   - pillar5
   - eelTerritory
+  - EelArea
   layers:
   - Default
   - TransparentFX
