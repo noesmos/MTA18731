@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class EventCatcher : MonoBehaviour {
 
-	
-	public GameObject torsk;
-	public GameObject eel;
-
 	bool canFish;
 	string fishingArea;
 
@@ -68,6 +64,8 @@ public class EventCatcher : MonoBehaviour {
 			GameManager.singleton.tribeBoat.GetComponent<TribeController>().SetFollowPlayer(false);
 			//remove fish
 			GameManager.singleton.RemoveAnyFish(5);
+			//go back to their own midden in bjørnsholm
+			GameManager.singleton.tribeBoat.GetComponent<TribeController>().GetInPosition(GameManager.singleton.bjørnsholm.transform.position);
 		}
 
     }
@@ -142,10 +140,11 @@ public class EventCatcher : MonoBehaviour {
 		{
 			Debug.Log("You have enough fish");
 			GameManager.singleton.RemoveAnyFish(5);
-			Instantiate(GameManager.singleton.flint,transform.position+ new Vector3(0,2,0), transform.rotation, transform);
+			Instantiate(GameManager.singleton.flint,transform.position+ transform.up*2 - 1.5f*transform.forward, transform.rotation, transform);
+			Debug.Break();
 			if(GameManager.singleton.Islinear)
 			{
-				GameManager.singleton.partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(GameManager.singleton.partner.GetComponent<PartnerSpeech>().GoToEel, "lLd os se om der er nogen flere ål i dag");
+				GameManager.singleton.partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(GameManager.singleton.partner.GetComponent<PartnerSpeech>().GoToEel, "Lad os se om der er nogen flere ål i dag");
 			}
 		}
 		DisableTrading();

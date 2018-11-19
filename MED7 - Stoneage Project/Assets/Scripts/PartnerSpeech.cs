@@ -20,6 +20,11 @@ public class PartnerSpeech : MonoBehaviour {
 		audio = GetComponent<AudioSource>();
 
 		speech.text = "it works";
+		if(GameManager.singleton.Islinear)
+		{
+			PartnerSaysSomething(GoToBasket, "Lad os sejle over og tømme ålefælden");
+		}
+
 	}
 	
 	// Update is called once per frame
@@ -27,9 +32,10 @@ public class PartnerSpeech : MonoBehaviour {
 		
 		if (!audio.isPlaying && !donePlaying)
         {
-            Debug.Log(audio.clip.name);
+            //Debug.Log(audio.clip.name);
             //audioSource.Play();
 			donePlaying = true;
+			GetComponent<PartnerAnimator>().StopTalking();
 			if(audio.clip.name == "GoToBasket")
 			{
 				GameManager.singleton.pillar1.SetActive(true);
@@ -68,6 +74,7 @@ public class PartnerSpeech : MonoBehaviour {
 				GameManager.singleton.eelTerritory.GetComponent<Collider>().enabled = true;
 				GameManager.singleton.torskTerritory2.GetComponent<Collider>().enabled = true;
 				GameManager.singleton.StartCountingEel();
+				GameManager.singleton.tribeBoat.GetComponent<TribeController>().GetInPosition(GameManager.singleton.bjørnsholm.transform.position);
 				foreach(GameObject area in GameManager.singleton.eelArea)
 				{
 					area.SetActive(true);
@@ -86,12 +93,14 @@ public class PartnerSpeech : MonoBehaviour {
 		{
 			donePlaying=false;
 			Debug.Log("playing again");
+
 		}
 	}
 
 
 	public void PartnerSaysSomething(AudioClip clip, string writtenLine)
 	{
+		GetComponent<PartnerAnimator>().StartTalking();
 		audio.clip = clip;
 		speech.text = writtenLine;
 		audio.Play();

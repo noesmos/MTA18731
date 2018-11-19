@@ -59,8 +59,14 @@ public class BoatControllerScript : MonoBehaviour {
 	}
 
 	public void BoatMovement () {
-		if(Input.GetButton("Fire1") && !outOfBounds)
+		if(Input.GetButtonDown("Fire1") && !outOfBounds)
 		{
+
+			GameManager.singleton.partner.GetComponent<PartnerAnimator>().StartPaddleAnimation();
+		}
+		else if(Input.GetButton("Fire1") && !outOfBounds)
+		{
+			
 			GetComponent<Rigidbody>().AddForce(transform.forward * speed * Mathf.Abs(Mathf.Sin(Time.realtimeSinceStartup * 1.0f)));
 
 			if (Vector3.Angle(transform.forward, Camera.main.transform.forward) > 10)
@@ -77,6 +83,10 @@ public class BoatControllerScript : MonoBehaviour {
 				transform.rotation = rot;
 			}
 			//Debug.Log(Vector3.Angle(transform.forward, Camera.main.transform.forward));
+		}
+		else if(Input.GetButtonUp("Fire1") && !outOfBounds)
+		{
+			GameManager.singleton.partner.GetComponent<PartnerAnimator>().StopPaddleAnimation();
 		}
 	}
 

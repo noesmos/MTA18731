@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour {
         public GameObject hook;
         public GameObject eeliron;
         public GameObject orca;
-
+        public GameObject bjørnsholm;
         public GameObject PelicanEvent;
         
         //prefabs
@@ -66,6 +66,8 @@ public class GameManager : MonoBehaviour {
             DontDestroyOnLoad(gameObject);
 
             boat = GameObject.FindGameObjectWithTag("boat");
+            //Debug.Log(boat.gameObject.name);      
+            bjørnsholm = GameObject.FindGameObjectWithTag("bjørnholm");
             //Debug.Log(boat.gameObject.name);            
             tribeBoat = GameObject.FindGameObjectWithTag("tribeBoat");
             //Debug.Log(tribeBoat.gameObject.name);
@@ -82,7 +84,7 @@ public class GameManager : MonoBehaviour {
             PelicanEvent.SetActive(false);
 
 
-            //linear stuff!
+            //what should be turned of initially for the linear condition
             if(Islinear)
             {
                 //disable the collider on following game objects
@@ -95,7 +97,6 @@ public class GameManager : MonoBehaviour {
                     area.SetActive(false);
                 }
                 torskTerritory.GetComponent<Collider>().enabled = false;
-                torskTerritory2.GetComponent<Collider>().enabled = false;
                 eelTerritory.GetComponent<Collider>().enabled = false;
                 tribeTerritory.GetComponent<Collider>().enabled = false;
                 midden.GetComponent<Collider>().enabled = false;
@@ -103,13 +104,16 @@ public class GameManager : MonoBehaviour {
                 tribeBasket.GetComponent<Collider>().enabled = false;
 
                 //totally disable the following game objects
+
+                tribeBasket.SetActive(false);
+            }
+            //what should be turned of initially for both condition
                 pillar1.SetActive(false);
                 pillar2.SetActive(false);
                 pillar3.SetActive(false);
                 pillar4.SetActive(false);
                 pillar5.SetActive(false);
-                tribeBasket.SetActive(false);
-            }
+                torskTerritory2.GetComponent<Collider>().enabled = false;
         } 
         
         //Update is called every frame.

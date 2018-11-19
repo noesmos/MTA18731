@@ -1,0 +1,386 @@
+fileFormatVersion: 2
+guid: 76252879d3588e749ab87d12a0163740
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Beards
+    100002: Body
+    100004: Bottoms
+    100006: default1
+    100008: Eyes
+    100010: Hair
+    100012: mixamorig:Head
+    100014: mixamorig:Hips
+    100016: mixamorig:LeftArm
+    100018: mixamorig:LeftEye
+    100020: mixamorig:LeftFoot
+    100022: mixamorig:LeftForeArm
+    100024: mixamorig:LeftHand
+    100026: mixamorig:LeftHandIndex1
+    100028: mixamorig:LeftHandIndex2
+    100030: mixamorig:LeftHandIndex3
+    100032: mixamorig:LeftHandMiddle1
+    100034: mixamorig:LeftHandMiddle2
+    100036: mixamorig:LeftHandMiddle3
+    100038: mixamorig:LeftHandPinky1
+    100040: mixamorig:LeftHandPinky2
+    100042: mixamorig:LeftHandPinky3
+    100044: mixamorig:LeftHandRing1
+    100046: mixamorig:LeftHandRing2
+    100048: mixamorig:LeftHandRing3
+    100050: mixamorig:LeftHandThumb1
+    100052: mixamorig:LeftHandThumb2
+    100054: mixamorig:LeftHandThumb3
+    100056: mixamorig:LeftLeg
+    100058: mixamorig:LeftShoulder
+    100060: mixamorig:LeftToeBase
+    100062: mixamorig:LeftUpLeg
+    100064: mixamorig:Neck
+    100066: mixamorig:RightArm
+    100068: mixamorig:RightEye
+    100070: mixamorig:RightFoot
+    100072: mixamorig:RightForeArm
+    100074: mixamorig:RightHand
+    100076: mixamorig:RightHandIndex1
+    100078: mixamorig:RightHandIndex2
+    100080: mixamorig:RightHandIndex3
+    100082: mixamorig:RightHandMiddle1
+    100084: mixamorig:RightHandMiddle2
+    100086: mixamorig:RightHandMiddle3
+    100088: mixamorig:RightHandPinky1
+    100090: mixamorig:RightHandPinky2
+    100092: mixamorig:RightHandPinky3
+    100094: mixamorig:RightHandRing1
+    100096: mixamorig:RightHandRing2
+    100098: mixamorig:RightHandRing3
+    100100: mixamorig:RightHandThumb1
+    100102: mixamorig:RightHandThumb2
+    100104: mixamorig:RightHandThumb3
+    100106: mixamorig:RightLeg
+    100108: mixamorig:RightShoulder
+    100110: mixamorig:RightToeBase
+    100112: mixamorig:RightUpLeg
+    100114: mixamorig:Spine
+    100116: mixamorig:Spine1
+    100118: mixamorig:Spine2
+    100120: Moustaches
+    100122: //RootNode
+    400000: Beards
+    400002: Body
+    400004: Bottoms
+    400006: default1
+    400008: Eyes
+    400010: Hair
+    400012: mixamorig:Head
+    400014: mixamorig:Hips
+    400016: mixamorig:LeftArm
+    400018: mixamorig:LeftEye
+    400020: mixamorig:LeftFoot
+    400022: mixamorig:LeftForeArm
+    400024: mixamorig:LeftHand
+    400026: mixamorig:LeftHandIndex1
+    400028: mixamorig:LeftHandIndex2
+    400030: mixamorig:LeftHandIndex3
+    400032: mixamorig:LeftHandMiddle1
+    400034: mixamorig:LeftHandMiddle2
+    400036: mixamorig:LeftHandMiddle3
+    400038: mixamorig:LeftHandPinky1
+    400040: mixamorig:LeftHandPinky2
+    400042: mixamorig:LeftHandPinky3
+    400044: mixamorig:LeftHandRing1
+    400046: mixamorig:LeftHandRing2
+    400048: mixamorig:LeftHandRing3
+    400050: mixamorig:LeftHandThumb1
+    400052: mixamorig:LeftHandThumb2
+    400054: mixamorig:LeftHandThumb3
+    400056: mixamorig:LeftLeg
+    400058: mixamorig:LeftShoulder
+    400060: mixamorig:LeftToeBase
+    400062: mixamorig:LeftUpLeg
+    400064: mixamorig:Neck
+    400066: mixamorig:RightArm
+    400068: mixamorig:RightEye
+    400070: mixamorig:RightFoot
+    400072: mixamorig:RightForeArm
+    400074: mixamorig:RightHand
+    400076: mixamorig:RightHandIndex1
+    400078: mixamorig:RightHandIndex2
+    400080: mixamorig:RightHandIndex3
+    400082: mixamorig:RightHandMiddle1
+    400084: mixamorig:RightHandMiddle2
+    400086: mixamorig:RightHandMiddle3
+    400088: mixamorig:RightHandPinky1
+    400090: mixamorig:RightHandPinky2
+    400092: mixamorig:RightHandPinky3
+    400094: mixamorig:RightHandRing1
+    400096: mixamorig:RightHandRing2
+    400098: mixamorig:RightHandRing3
+    400100: mixamorig:RightHandThumb1
+    400102: mixamorig:RightHandThumb2
+    400104: mixamorig:RightHandThumb3
+    400106: mixamorig:RightLeg
+    400108: mixamorig:RightShoulder
+    400110: mixamorig:RightToeBase
+    400112: mixamorig:RightUpLeg
+    400114: mixamorig:Spine
+    400116: mixamorig:Spine1
+    400118: mixamorig:Spine2
+    400120: Moustaches
+    400122: //RootNode
+    2100000: Bodymat
+    2100002: Bottommat
+    2100004: Hairmat
+    2100006: Beardmat
+    2100008: Moustachemat
+    4300000: default1
+    4300002: Eyes
+    4300004: Body
+    4300006: Bottoms
+    4300008: Hair
+    4300010: Beards
+    4300012: Moustaches
+    7400000: GuidePointLeft
+    9500000: //RootNode
+    13700000: Beards
+    13700002: Body
+    13700004: Bottoms
+    13700006: default1
+    13700008: Eyes
+    13700010: Hair
+    13700012: Moustaches
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Guy1_Beard_Diffuse
+    second: {fileID: 2800000, guid: 2589946ec03fcc7498a2324f65ab7d18, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Guy1_Beard_Gloss
+    second: {fileID: 2800000, guid: 216695ffa9fd11e4caa9758e6023995f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Guy1_Beard_Normal
+    second: {fileID: 2800000, guid: 153607741c9d2324c81af0671bc06c4a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Guy1_Beard_Opacity
+    second: {fileID: 2800000, guid: a23b2ece3e325ca4e90833a44bd51b23, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Guy1_Beard_Specular
+    second: {fileID: 2800000, guid: 6b9c8ff4dc47f68489689aaafc5b4b28, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Guy1_Body_Diffuse
+    second: {fileID: 2800000, guid: 17a18b9148487144e8717cf7148f942d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Guy1_Body_Gloss
+    second: {fileID: 2800000, guid: 28ceb104ab0ff5c41be53871af7e01b2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Guy1_Body_Normal
+    second: {fileID: 2800000, guid: cdaf0976cda6d2c41a5ae38a5f35e063, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Guy1_Body_Opacity
+    second: {fileID: 2800000, guid: d376deff27d1b2d4d8550ff8bc487c52, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Guy1_Body_Specular
+    second: {fileID: 2800000, guid: 1a98cfb9fe0b4e74dbd588ab848daa18, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Guy1_Bottom_Diffuse
+    second: {fileID: 2800000, guid: 7871ba5df31caa145af9839b84aabf84, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Guy1_Bottom_Gloss
+    second: {fileID: 2800000, guid: 1219cd5e4617bc94982afb4544a29713, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Guy1_Bottom_Normal
+    second: {fileID: 2800000, guid: df5f21973153ef449beba6bf52bff794, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Guy1_Bottom_Opacity
+    second: {fileID: 2800000, guid: f726ddbbdb49db547be45e7bbe6ff673, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Guy1_Bottom_Specular
+    second: {fileID: 2800000, guid: f78906426e6e29c4282f4e8f7f758249, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Guy1_Hair_Diffuse
+    second: {fileID: 2800000, guid: e35be1efabe33a24a814a8eebc564ef7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Guy1_Hair_Gloss
+    second: {fileID: 2800000, guid: d2471a2e947a0484482c467322e49822, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Guy1_Hair_Normal
+    second: {fileID: 2800000, guid: fac83f3318a88a147a0e97dae8dd7b9e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Guy1_Hair_Opacity
+    second: {fileID: 2800000, guid: 8db66ffe9859cab47b98eb426d75dd66, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Guy1_Hair_Specular
+    second: {fileID: 2800000, guid: 5157be0159f7a924b8b0f0532caea15b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Guy1_Moustache_Diffuse
+    second: {fileID: 2800000, guid: b785e294ab56b5c44a653e85d767fb48, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Guy1_Moustache_Gloss
+    second: {fileID: 2800000, guid: e132f2f39592c8c478f0a985199de807, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Guy1_Moustache_Normal
+    second: {fileID: 2800000, guid: 8ca8da08a38ab2044a1d14b15949520f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Guy1_Moustache_Opacity
+    second: {fileID: 2800000, guid: 0b20772ca944a354aa0895591eb39e1c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Guy1_Moustache_Specular
+    second: {fileID: 2800000, guid: 429d2d6a7d4285d4d8a6cde2b0791567, type: 3}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: GuidePointLeft
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 392
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -26,6 +26,7 @@ TagManager:
   - pillar5
   - eelTerritory
   - EelArea
+  - "bj\xF8rnholm"
   layers:
   - Default
   - TransparentFX
@@ -36,8 +37,8 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
+  - Terrain
+  - TribeBoat
   - 
   - 
   - 

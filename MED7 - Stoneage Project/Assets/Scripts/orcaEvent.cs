@@ -89,7 +89,7 @@ public class orcaEvent : MonoBehaviour {
 
 			orcaMoving = true;
 			velocity = velocitySpeed;	
-			if(IsOrca)
+			if(IsOrca && GameManager.singleton.Islinear)
 			{
 				GameManager.singleton.tribeBoat.GetComponent<TribeController>().GetInPosition();
 			}

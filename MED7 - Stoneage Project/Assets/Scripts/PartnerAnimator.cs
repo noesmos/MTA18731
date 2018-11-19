@@ -47,6 +47,15 @@ public class PartnerAnimator : MonoBehaviour {
 		anim.SetTrigger("trapFull");
 	}
 
+	public void StartTalking()
+	{
+		anim.SetBool("isTalking", true);
+	}
+	public void StopTalking()
+	{
+		anim.SetBool("isTalking",false);
+	}
+
 	public void codCaught()
 	{
 		anim.SetTrigger("codCaught");
@@ -64,10 +73,10 @@ public class PartnerAnimator : MonoBehaviour {
 
 
 	public void StartPaddleAnimation(){
-		anim.SetBool("isPaddling", true);
+		anim.SetBool("isRowing", true);
 	}
-		public void StopPaddleAnimation(){
-		anim.SetBool("isPaddling", false);
+	public void StopPaddleAnimation(){
+		anim.SetBool("isRowing", false);
 	}
 
 	public void HookAniDone(){

@@ -8,6 +8,7 @@ public class TribeController : MonoBehaviour {
 	public float rotationSpeed = 160f;
 
 	public GameObject pillar;
+	Vector3 newPos;
 	float verticalInput;
 	float horizontalInput;
 	float steerFactor;
@@ -31,6 +32,7 @@ public class TribeController : MonoBehaviour {
 	{
 		playerBoat = GameManager.singleton.boat;
 		tribeTrigger = GameObject.FindGameObjectWithTag("tribeTrigger");
+		newPos=pillar.transform.position;
 	}
 
 	// Update is called once per frame
@@ -49,7 +51,7 @@ public class TribeController : MonoBehaviour {
 
 		if(toPosition)
 		{
-			steerDirection = pillar.transform.position - transform.position;
+			steerDirection = newPos - transform.position;
 		}
 		else if(distance2left<distance2right)
 		{
@@ -82,7 +84,7 @@ public class TribeController : MonoBehaviour {
 		if(followPlayer || toPosition)
 		{
 			//Debug.Log(Vector3.Distance(pillar.transform.position, transform.position));
-			if(Vector3.Distance(new Vector3(pillar.transform.position.x, 0, pillar.transform.position.z), transform.position)<15)
+			if(Vector3.Distance(new Vector3(newPos.x, 0, newPos.z), transform.position)<15)
 			{
 				toPosition = false;
 			}
@@ -113,6 +115,11 @@ public class TribeController : MonoBehaviour {
 
 	public void GetInPosition()
 	{
+		toPosition=true;
+	}
+		public void GetInPosition(Vector3 newPos)
+	{
+		this.newPos = newPos;
 		toPosition=true;
 	}
 
