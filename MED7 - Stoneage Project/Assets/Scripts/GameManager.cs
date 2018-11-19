@@ -28,6 +28,10 @@ public class GameManager : MonoBehaviour {
         List<GameObject> caughtTorsk =new List<GameObject>();
         List<GameObject> caughtFlatfish =new List<GameObject>();
 
+        // Audio Sources
+
+        public GameObject paddle;
+
 
         //linear stuff
         bool isCountingTorsk = false;
@@ -77,6 +81,7 @@ public class GameManager : MonoBehaviour {
             //Debug.Log(hook.gameObject.name);
             eeliron = GameObject.FindGameObjectWithTag("eeliron");
             //Debug.Log(eeliron.gameObject.name);
+            paddle = GameObject.FindGameObjectWithTag("paddle");
             orca = GameObject.FindGameObjectWithTag("orca");
             //Debug.Log(orca.gameObject.name);
             PelicanEvent = GameObject.FindGameObjectWithTag("flyingPelican");

@@ -61,7 +61,7 @@ public class BoatControllerScript : MonoBehaviour {
 	public void BoatMovement () {
 		if(Input.GetButtonDown("Fire1") && !outOfBounds)
 		{
-
+			GameManager.singleton.paddle.GetComponent<AudioSource>().Play();
 			GameManager.singleton.partner.GetComponent<PartnerAnimator>().StartPaddleAnimation();
 		}
 		else if(Input.GetButton("Fire1") && !outOfBounds)
@@ -86,6 +86,7 @@ public class BoatControllerScript : MonoBehaviour {
 		}
 		else if(Input.GetButtonUp("Fire1") && !outOfBounds)
 		{
+			GameManager.singleton.paddle.GetComponent<AudioSource>().Stop();
 			GameManager.singleton.partner.GetComponent<PartnerAnimator>().StopPaddleAnimation();
 		}
 	}
