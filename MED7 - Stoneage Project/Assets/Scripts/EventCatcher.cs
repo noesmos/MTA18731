@@ -7,6 +7,9 @@ public class EventCatcher : MonoBehaviour {
 	bool canFish;
 	string fishingArea;
 
+	bool firstTimeInTorskArea = true;
+	bool firstTimeInEelArea = true;
+
 	GameObject fishingAreaObject;
 
 	// Use this for initialization
@@ -32,6 +35,21 @@ public class EventCatcher : MonoBehaviour {
 			fishingArea = other.tag;
 			fishingAreaObject = other.gameObject;
 			Debug.Log("you are now in the "+fishingArea);
+			
+			if(other.tag == "TorskArea" && GameManager.singleton.Islinear && firstTimeInTorskArea)
+			{
+				firstTimeInTorskArea = false;
+				GameManager.singleton.
+					partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(
+					GameManager.singleton.partner.GetComponent<PartnerSpeech>().CodEnterArea);
+			}
+			if( other.tag == "EelArea" && GameManager.singleton.Islinear && firstTimeInEelArea)
+			{
+				firstTimeInEelArea = false;
+				GameManager.singleton.
+					partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(
+					GameManager.singleton.partner.GetComponent<PartnerSpeech>().FlaringEel);
+			}
 		}
         //when you go back to ertebølle midden to retrieve tool
 		if(other.tag == "ertebølle")
@@ -141,10 +159,10 @@ public class EventCatcher : MonoBehaviour {
 			Debug.Log("You have enough fish");
 			GameManager.singleton.RemoveAnyFish(5);
 			Instantiate(GameManager.singleton.flint,transform.position+ transform.up*2 - 1.5f*transform.forward, transform.rotation, transform);
-			Debug.Break();
+			//Debug.Break();
 			if(GameManager.singleton.Islinear)
 			{
-				GameManager.singleton.partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(GameManager.singleton.partner.GetComponent<PartnerSpeech>().GoToEel, "Lad os se om der er nogen flere ål i dag");
+				GameManager.singleton.partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(GameManager.singleton.partner.GetComponent<PartnerSpeech>().AfterTradingFlint, "Lad os se om der er nogen flere ål i dag");
 			}
 		}
 		DisableTrading();

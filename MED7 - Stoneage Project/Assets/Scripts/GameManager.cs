@@ -28,6 +28,10 @@ public class GameManager : MonoBehaviour {
         List<GameObject> caughtTorsk =new List<GameObject>();
         List<GameObject> caughtFlatfish =new List<GameObject>();
 
+        //tools held by guide + the paddle with audio source
+        public GameObject aniTorch;
+        public GameObject aniEelIron;
+
         // Audio Sources
 
         public GameObject paddle;
@@ -140,7 +144,7 @@ public class GameManager : MonoBehaviour {
                 
                 if(currentEelAmount-startEelAmount>=3)
                 {
-                    partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(partner.GetComponent<PartnerSpeech>().GoToMidden, "Lad os tage hjem igen");
+                    partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(partner.GetComponent<PartnerSpeech>().AfterFlaringEel, "Lad os tage hjem igen");
                 }
             }
 
@@ -155,10 +159,18 @@ public class GameManager : MonoBehaviour {
             if(isCountingTorsk)
             {
                 Debug.Log("checking for torsk caught");
-                if(currentTorskAmount-startTorskAmount>=3)
+                if(currentTorskAmount-startTorskAmount==1)
+                {
+                    partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(partner.GetComponent<PartnerSpeech>().CodTwoMore);
+                }
+                else if(currentTorskAmount-startTorskAmount==2)
+                {
+                    partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(partner.GetComponent<PartnerSpeech>().CodOneMore);
+                }
+                else if(currentTorskAmount-startTorskAmount>=3)
                 {
 
-                    partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(partner.GetComponent<PartnerSpeech>().GoToTribe, "Lad os Bytte nogen fisk for flint");
+                    partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(partner.GetComponent<PartnerSpeech>().AfterCodCatch, "Lad os Bytte nogen fisk for flint");
                 }
             }
         }

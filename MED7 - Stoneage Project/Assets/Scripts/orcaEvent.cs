@@ -89,10 +89,23 @@ public class orcaEvent : MonoBehaviour {
 
 			orcaMoving = true;
 			velocity = velocitySpeed;	
-			if(IsOrca && GameManager.singleton.Islinear)
+			if(IsOrca)
 			{
-				GameManager.singleton.tribeBoat.GetComponent<TribeController>().GetInPosition();
+								GameManager.singleton.
+					partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(
+					GameManager.singleton.partner.GetComponent<PartnerSpeech>().OrcaAppears);
+
+				if(GameManager.singleton.Islinear)
+				{
+					GameManager.singleton.tribeBoat.GetComponent<TribeController>().GetInPosition();
+				}
 			}
+			else
+			{
+
+							GameManager.singleton.
+					partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(
+					GameManager.singleton.partner.GetComponent<PartnerSpeech>().PelicanAppears);}
 		}
 
 	}

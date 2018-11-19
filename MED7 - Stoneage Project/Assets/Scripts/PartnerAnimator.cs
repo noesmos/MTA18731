@@ -23,13 +23,18 @@ public class PartnerAnimator : MonoBehaviour {
 		
 	}
 
+
 	public void HookAnimation()
 	{
 		anim.SetTrigger("hookFishing");
+		GameManager.singleton.paddle.SetActive(false);
 	}
 	public void EelironAnimation()
 	{
 		anim.SetTrigger("eelIronFishing");
+		GameManager.singleton.paddle.SetActive(false);
+		GameManager.singleton.aniEelIron.SetActive(true);
+		GameManager.singleton.aniTorch.SetActive(true);
 	}
 
 	public void BasketAnimation()
@@ -81,6 +86,7 @@ public class PartnerAnimator : MonoBehaviour {
 
 	public void HookAniDone(){
 		GameManager.singleton.hook.GetComponent<SelectTool>().ShowTool();
+		GameManager.singleton.paddle.SetActive(true);
 		Debug.Log("Hook ani done");
 		if(GameManager.singleton.boat.GetComponent<EventCatcher>().GetCanFish())
 		{
@@ -91,12 +97,23 @@ public class PartnerAnimator : MonoBehaviour {
 		}
 
 		//check if there is more fish in the area
-		GameManager.singleton.boat.GetComponent<EventCatcher>().GetCurrentFishingArea().GetComponent<FishContent>().DestroyEmptyArea();
-	}
+		try
+		{
+			GameManager.singleton.boat.GetComponent<EventCatcher>().GetCurrentFishingArea().GetComponent<FishContent>().DestroyEmptyArea();
+		}
+		catch{}
 
+	}
+	public void PaddleAniDone(){
+		ResetToolOnGuide();
+
+	}
 	
 	public void EelIronAniDone(){
 		GameManager.singleton.eeliron.GetComponent<SelectTool>().ShowTool();
+		GameManager.singleton.paddle.SetActive(true);
+		GameManager.singleton.aniEelIron.SetActive(false);
+		GameManager.singleton.aniTorch.SetActive(false);
 		Debug.Log("iron ani done");
 		if(GameManager.singleton.boat.GetComponent<EventCatcher>().GetCanFish())
 		{
@@ -106,7 +123,11 @@ public class PartnerAnimator : MonoBehaviour {
 			noCatch();
 		}
 
-		GameManager.singleton.boat.GetComponent<EventCatcher>().GetCurrentFishingArea().GetComponent<FishContent>().DestroyEmptyArea();
+		try
+		{
+			GameManager.singleton.boat.GetComponent<EventCatcher>().GetCurrentFishingArea().GetComponent<FishContent>().DestroyEmptyArea();
+		}
+		catch{}
 
 	}
 	public void BasketAniDone(){
@@ -115,7 +136,14 @@ public class PartnerAnimator : MonoBehaviour {
 		if (basketFull)
 		{
 			trapFull();
-			for(int i =0; i < 5; i++)
+			
+			for(int i =0; i < 4; i++)
+			{
+				Debug.Log("putting fish in basket");
+				//PutEelInBasket();
+				PutEelInBasket();
+			}
+			for(int i =0; i < 2; i++)
 			{
 				Debug.Log("putting fish in basket");
 				//PutEelInBasket();
@@ -123,7 +151,7 @@ public class PartnerAnimator : MonoBehaviour {
 			}
 			if(GameManager.singleton.Islinear)
 			{
-				GetComponent<PartnerSpeech>().PartnerSaysSomething(GetComponent<PartnerSpeech>().GoToTorsk, " Lad os fange tre torsk");
+				GetComponent<PartnerSpeech>().PartnerSaysSomething(GetComponent<PartnerSpeech>().AfterEmptyBasket, " Lad os fange tre torsk");
 			}
 			Debug.Log("Trap Full");
 		} else {
@@ -144,11 +172,17 @@ public class PartnerAnimator : MonoBehaviour {
 		mostRecentFish = Instantiate(GameManager.singleton.torsk,boat.transform.position+ new Vector3(0,1,0), boat.transform.rotation, boat.transform);
 		GameManager.singleton.AddTorsk(mostRecentFish);
 	}
-		public void PutEelInBasket()
+	public void PutEelInBasket()
 	{
 		//instatiate a fish in the boay
 		mostRecentFish = Instantiate(GameManager.singleton.eel,boat.transform.position + new Vector3(0,1,0), boat.transform.rotation, boat.transform);
 		GameManager.singleton.AddEel(mostRecentFish);
+	}
+	void ResetToolOnGuide()
+	{
+				GameManager.singleton.paddle.SetActive(true);
+		GameManager.singleton.aniEelIron.SetActive(false);
+		GameManager.singleton.aniTorch.SetActive(false);
 	}
 
 

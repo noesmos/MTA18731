@@ -61,6 +61,12 @@ PartnerAnimator PA;
 			PA.BasketAnimation();
 			Debug.Log("emptying basket");
 			GetComponent<Collider>().enabled=false;
+			if(GameManager.singleton.Islinear)
+			{
+				GameManager.singleton.
+					partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(
+					GameManager.singleton.partner.GetComponent<PartnerSpeech>().EmptyBasket);
+			}
 			if(IsTribeBasket)
 			{
 				GameManager.singleton.tribeBoat.GetComponent<TribeController>().SetFollowPlayer(true);
