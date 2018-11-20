@@ -29,7 +29,7 @@ public class PartnerSpeech : MonoBehaviour {
 	public AudioClip StartofGameEmergent;
 	public AudioClip CheckBasketFish;
 	public AudioClip CheckBasketNoFish;
-	//public AudioClip EnterCodArea;
+	public AudioClip EnterCodAreaEmergent;
 	public AudioClip EnterCoastAreaDay;
 	public AudioClip EnterCoastAreaNight;
 	public AudioClip EnterTribe;
@@ -70,10 +70,14 @@ public class PartnerSpeech : MonoBehaviour {
 	void Start () {
 		audio = GetComponent<AudioSource>();
 
-		speech.text = "it works";
+		speech.text = "";
 		if(GameManager.singleton.Islinear)
 		{
-			PartnerSaysSomething(StartofGameLinear, "Lad os sejle over og tømme ålefælden");
+			PartnerSaysSomething(StartofGameLinear, "TØM ÅLEGÅRDEN");
+		}
+		else
+		{
+			PartnerSaysSomething(StartofGameEmergent, "NY Tekst");
 		}
 
 	}
@@ -90,11 +94,13 @@ public class PartnerSpeech : MonoBehaviour {
 			if(audio.clip.name == "StartofGame_linear")
 			{
 				GameManager.singleton.pillar1.SetActive(true);
+				GameManager.singleton.currentPillar =GameManager.singleton.pillar1;
 				GameManager.singleton.basket.GetComponent<Collider>().enabled = true;
 			}
 			else if(audio.clip.name == "AfterEmptyBasket_linear")
 			{
 				GameManager.singleton.pillar2.SetActive(true);
+				GameManager.singleton.currentPillar =GameManager.singleton.pillar2;
 				GameManager.singleton.pillar1.SetActive(false);
 				//Destroy(GameManager.singleton.pillar1);
 				Debug.Log("pillar1 is now "+GameManager.singleton.pillar1.activeSelf);
@@ -110,6 +116,7 @@ public class PartnerSpeech : MonoBehaviour {
 			else if(audio.clip.name == "AfterCodCatch_linear")
 			{
 				GameManager.singleton.pillar3.SetActive(true);
+				GameManager.singleton.currentPillar =GameManager.singleton.pillar3;
 				GameManager.singleton.pillar2.SetActive(false);
 				Debug.Log("pillar2 is now "+GameManager.singleton.pillar2.activeSelf);
 				GameManager.singleton.trading.GetComponent<Collider>().enabled = true;
@@ -120,6 +127,7 @@ public class PartnerSpeech : MonoBehaviour {
 			{
 				Debug.Log("eel event happening");
 				GameManager.singleton.pillar4.SetActive(true);
+				GameManager.singleton.currentPillar =GameManager.singleton.pillar4;
 				GameManager.singleton.pillar3.SetActive(false);
 				Debug.Log("pillar3 is now "+GameManager.singleton.pillar3.activeSelf);
 				GameManager.singleton.eelTerritory.GetComponent<Collider>().enabled = true;
@@ -135,6 +143,7 @@ public class PartnerSpeech : MonoBehaviour {
 			else if(audio.clip.name == "AfterFlaringEel_linear")
 			{
 				GameManager.singleton.pillar5.SetActive(true);
+				GameManager.singleton.currentPillar =GameManager.singleton.pillar5;
 				GameManager.singleton.pillar4.SetActive(false);
 				Debug.Log("pillar4 is now "+GameManager.singleton.pillar4.activeSelf);
 				GameManager.singleton.midden.GetComponent<Collider>().enabled = true;
@@ -144,7 +153,7 @@ public class PartnerSpeech : MonoBehaviour {
 		{
 			donePlaying=false;
 			Debug.Log("playing again");
-			Debug.Break();
+			//Debug.Break();
 
 		}
 	}

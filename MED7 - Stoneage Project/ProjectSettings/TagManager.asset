@@ -28,6 +28,8 @@ TagManager:
   - EelArea
   - "bj\xF8rnholm"
   - paddle
+  - timer
+  - sealTerritory
   layers:
   - Default
   - TransparentFX

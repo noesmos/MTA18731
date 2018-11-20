@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour {
         public static GameManager singleton = null;              //Static instance of GameManager which allows it to be accessed by any other script.                            //Current level number, expressed in game as "Day 1".
 
         //instanses in the scene
+        
+        public GameObject timer;
         public GameObject boat;
         public GameObject tribeBoat;
         public GameObject partner;
@@ -49,7 +51,8 @@ public class GameManager : MonoBehaviour {
         public bool Islinear;
         public List<GameObject> torskArea, eelArea = new List<GameObject>();
         public GameObject trading;
-        public GameObject pillar1,pillar2,pillar3,pillar4,pillar5;
+        public GameObject pillar1,pillar2,pillar3,pillar4,pillar5, currentPillar;
+
         public GameObject torskTerritory, torskTerritory2, eelTerritory, tribeTerritory;
         public GameObject basket,tribeBasket;
         public GameObject midden;
@@ -73,6 +76,8 @@ public class GameManager : MonoBehaviour {
             //Sets this to not be destroyed when reloading scene
             DontDestroyOnLoad(gameObject);
 
+            timer = GameObject.FindGameObjectWithTag("timer");
+            //Debug.Log(boat.gameObject.name); 
             boat = GameObject.FindGameObjectWithTag("boat");
             //Debug.Log(boat.gameObject.name);      
             bjørnsholm = GameObject.FindGameObjectWithTag("bjørnholm");

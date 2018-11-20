@@ -40,15 +40,6 @@ public class BoatControllerScript : MonoBehaviour {
 			Debug.Log("You're back in bounds!");
 		}
 	}
-
-	void Movement () {
-		verticalInput = Input.GetAxis("Vertical");
-		if(Input.GetAxis("Vertical") != 0 && !outOfBounds)
-		{
-			GetComponent<Rigidbody>().AddForce(Input.GetAxis("Vertical") * transform.forward * speed * Mathf.Abs(Mathf.Sin(Time.realtimeSinceStartup * 1.0f)));
-		}
-	}
-
 	void TestSteer () {
 		if(!outOfBounds)
 		{
@@ -57,19 +48,69 @@ public class BoatControllerScript : MonoBehaviour {
 			transform.Rotate(0.0f, steerFactor, 0.0f);
 		}
 	}
+	void Movement () {
+		verticalInput = Input.GetAxis("Vertical");
+		if(Input.GetAxis("Vertical") != 0 && !outOfBounds)
+		{
+			float sinusoid = (Mathf.Sin(Time.time * 2) + 1) / 2;
+			if(sinusoid < 0.2f)
+			{
+				sinusoid = 0.2f;
+			}
+			GetComponent<Rigidbody>().AddForce(transform.forward * speed * sinusoid);
+			Debug.Log(sinusoid);
+		}
+	}
 
 	public void BoatMovement () {
 		if(Input.GetButtonDown("Fire1") && !outOfBounds)
 		{
 			GameManager.singleton.paddle.GetComponent<AudioSource>().Play();
-			GameManager.singleton.partner.GetComponent<PartnerAnimator>().StartPaddleAnimation();
-		}
-		else if(Input.GetButton("Fire1") && !outOfBounds)
+			GameManager.singleton.partner.GetComponent<PartnerAnimator>().paddleAnimation(true);
+		} else if(Input.GetButtonUp("Fire1") && !outOfBounds)
 		{
-			
-			GetComponent<Rigidbody>().AddForce(transform.forward * speed * Mathf.Abs(Mathf.Sin(Time.realtimeSinceStartup * 1.0f)));
+			GameManager.singleton.paddle.GetComponent<AudioSource>().Stop();
+			GameManager.singleton.partner.GetComponent<PartnerAnimator>().paddleAnimation(false);
+		}
+		
+		if(Input.GetButton("Fire1") && !outOfBounds)
+		{
+			float sinusoid = (Mathf.Sin(Time.time * 2.175f) + 1) / 2;
+			if(sinusoid < 0.2f)
+			{
+				sinusoid = 0.2f;
+			}
 
-			if (Vector3.Angle(transform.forward, Camera.main.transform.forward) > 10)
+			if (Vector3.Distance(GameManager.singleton.currentPillar.transform.position, transform.position) > 150)
+			{
+				float wrongWayAngle = Vector3.SignedAngle(transform.forward, new Vector3(GameManager.singleton.currentPillar.transform.position.x, 0, GameManager.singleton.currentPillar.transform.position.z) - transform.position, Vector3.up);
+				Debug.Log(Vector3.SignedAngle(transform.forward, new Vector3(GameManager.singleton.currentPillar.transform.position.x, 0, GameManager.singleton.currentPillar.transform.position.z) - transform.position, Vector3.up));
+				if(wrongWayAngle > 90)
+				{
+					// Right
+					GameManager.singleton.partner.GetComponent<PartnerAnimator>().wrongWay(true);
+					GameManager.singleton.partner.GetComponent<PartnerAnimator>().pointRight(true);
+					GameManager.singleton.partner.GetComponent<PartnerAnimator>().pointLeft(false);
+				} else if (wrongWayAngle < -90) {
+					// Left
+					GameManager.singleton.partner.GetComponent<PartnerAnimator>().wrongWay(true);
+					GameManager.singleton.partner.GetComponent<PartnerAnimator>().pointLeft(true);
+					GameManager.singleton.partner.GetComponent<PartnerAnimator>().pointRight(false);
+				} else {
+					GameManager.singleton.partner.GetComponent<PartnerAnimator>().wrongWay(false);
+					GameManager.singleton.partner.GetComponent<PartnerAnimator>().pointLeft(false);
+					GameManager.singleton.partner.GetComponent<PartnerAnimator>().pointRight(false);
+				}
+			
+			}
+
+			if(	GameManager.singleton.partner.GetComponent<PartnerAnimator>().anim.GetCurrentAnimatorStateInfo(0).IsTag("default") || GameManager.singleton.partner.GetComponent<PartnerAnimator>().anim.GetCurrentAnimatorStateInfo(0).IsTag("paddling"))
+			{
+				GetComponent<Rigidbody>().AddForce(transform.forward * speed * sinusoid);
+			}
+			
+
+			if (Vector3.Angle(transform.forward, Camera.main.transform.forward) > 5)
 			{
 				// The step size is equal to speed times frame time.
 				float step = rotationSpeed * Time.deltaTime;
@@ -84,35 +125,30 @@ public class BoatControllerScript : MonoBehaviour {
 			}
 			//Debug.Log(Vector3.Angle(transform.forward, Camera.main.transform.forward));
 		}
-		else if(Input.GetButtonUp("Fire1") && !outOfBounds)
-		{
-			GameManager.singleton.paddle.GetComponent<AudioSource>().Stop();
-			GameManager.singleton.partner.GetComponent<PartnerAnimator>().StopPaddleAnimation();
-		}
 	}
 
-	IEnumerator forceRotate()
-    {
-		// The step size is equal to speed times frame time.
-		float rotStep = rotationSpeed * Time.deltaTime;
-
-		while (transform.forward != (new Vector3(0,transform.position.y,0) - transform.position).normalized)
+		IEnumerator forceRotate()
 		{
-			Vector3 newDir = Vector3.RotateTowards(transform.forward, (new Vector3(0,transform.position.y,0) - transform.position), rotStep, 0.0f);
+			// The step size is equal to speed times frame time.
+			float rotStep = rotationSpeed * Time.deltaTime;
+
+			while (transform.forward != (new Vector3(0,transform.position.y,0) - transform.position).normalized)
+			{
+				Vector3 newDir = Vector3.RotateTowards(transform.forward, (new Vector3(0,transform.position.y,0) - transform.position), rotStep, 0.0f);
+					
+				// calculate the Quaternion for the rotation
+				Quaternion rot = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(newDir), rotationSpeed * Time.deltaTime);
 				
-			// calculate the Quaternion for the rotation
-			Quaternion rot = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(newDir), rotationSpeed * Time.deltaTime);
+				//Apply the rotation 
+				transform.rotation = rot;
+
+				Debug.Log(transform.forward + " ---- " + (new Vector3(0,transform.position.y,0) - transform.position).normalized);
+
+				yield return null;
+			}
 			
-			//Apply the rotation 
-			transform.rotation = rot;
-
-			Debug.Log(transform.forward + " ---- " + (new Vector3(0,transform.position.y,0) - transform.position).normalized);
-
 			yield return null;
 		}
-		
-        yield return null;
-    }
 
 	IEnumerator forceMove()
     {

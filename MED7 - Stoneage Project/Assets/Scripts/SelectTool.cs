@@ -63,6 +63,7 @@ PartnerAnimator PA;
 			GetComponent<Collider>().enabled=false;
 			if(GameManager.singleton.Islinear)
 			{
+				Debug.Log("Linear empty basket");
 				GameManager.singleton.
 					partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(
 					GameManager.singleton.partner.GetComponent<PartnerSpeech>().EmptyBasket);
@@ -70,6 +71,12 @@ PartnerAnimator PA;
 			if(IsTribeBasket)
 			{
 				GameManager.singleton.tribeBoat.GetComponent<TribeController>().SetFollowPlayer(true);
+				if(!GameManager.singleton.Islinear)
+				{
+					GameManager.singleton.
+						partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(
+						GameManager.singleton.partner.GetComponent<PartnerSpeech>().FishingTribe);
+				}
 				
 			}
 		}

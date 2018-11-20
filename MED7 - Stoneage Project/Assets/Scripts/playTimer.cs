@@ -15,6 +15,11 @@ public class playTimer : MonoBehaviour {
 	float time;
 	float timeSpent=0;
 
+	//talking booleans
+	bool oneMinLeft=true;
+	bool twoMinLeft=true;
+
+
 	// Use this for initialization
 	void Start () {
 	time = totalPlayTime;
@@ -22,6 +27,7 @@ public class playTimer : MonoBehaviour {
 		Vector3 startAngle = new Vector3(startValue,0,0);	
 		Vector3 endAngle = new Vector3(endValue,0,0);
 	}
+	
 	
 	// Update is called once per frame
 	void Update () {
@@ -54,5 +60,28 @@ public class playTimer : MonoBehaviour {
 		{
 			//get the amount of fish caught, compare it to required amount and change scene(or something) according to outcome 
 		}
+		if(!GameManager.singleton.Islinear)
+		//when there is two minutes left
+		Debug.Log("timer:" + timeSpent);
+		if(timeSpent <=0.4 && twoMinLeft)
+		{
+			twoMinLeft=false;
+			GameManager.singleton.partner.
+				GetComponent<PartnerSpeech>().PartnerSaysSomething(
+				GameManager.singleton.partner.GetComponent<PartnerSpeech>().Time2MinLeft);
+		}
+		//when there is onr minutes left
+		if(timeSpent <=0.2 && oneMinLeft)
+		{
+			oneMinLeft =  false;
+			GameManager.singleton.partner.
+				GetComponent<PartnerSpeech>().PartnerSaysSomething(
+				GameManager.singleton.partner.GetComponent<PartnerSpeech>().Time1MinLeft);
+		}
+	}
+
+	public float GetTimeSpent()
+	{
+		return timeSpent;
 	}
 }

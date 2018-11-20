@@ -139,7 +139,7 @@ ModelImporter:
     4300008: Hair
     4300010: Beards
     4300012: Moustaches
-    7400000: GuidePointRight
+    7400000: GuidePointRightStart
     9500000: //RootNode
     13700000: Beards
     13700002: Body
@@ -177,10 +177,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: GuidePointRight
+      name: GuidePointRightStart
       takeName: Take 001
       firstFrame: 0
-      lastFrame: 94
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

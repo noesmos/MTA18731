@@ -36,19 +36,49 @@ public class EventCatcher : MonoBehaviour {
 			fishingAreaObject = other.gameObject;
 			Debug.Log("you are now in the "+fishingArea);
 			
-			if(other.tag == "TorskArea" && GameManager.singleton.Islinear && firstTimeInTorskArea)
+			if(other.tag == "TorskArea" && firstTimeInTorskArea)
 			{
 				firstTimeInTorskArea = false;
-				GameManager.singleton.
-					partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(
-					GameManager.singleton.partner.GetComponent<PartnerSpeech>().CodEnterArea);
+				if(GameManager.singleton.Islinear)
+				{
+					GameManager.singleton.
+						partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(
+						GameManager.singleton.partner.GetComponent<PartnerSpeech>().CodEnterArea);
+				}
+				else
+				{
+					GameManager.singleton.
+						partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(
+						GameManager.singleton.partner.GetComponent<PartnerSpeech>().EnterCodAreaEmergent);
+				}	
 			}
-			if( other.tag == "EelArea" && GameManager.singleton.Islinear && firstTimeInEelArea)
+			if( other.tag == "EelArea" && firstTimeInEelArea)
 			{
 				firstTimeInEelArea = false;
-				GameManager.singleton.
-					partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(
-					GameManager.singleton.partner.GetComponent<PartnerSpeech>().FlaringEel);
+				if(GameManager.singleton.Islinear)
+				{
+					GameManager.singleton.
+						partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(
+						GameManager.singleton.partner.GetComponent<PartnerSpeech>().FlaringEel);
+				}
+				else
+				{
+					float time =GameManager.singleton.timer.GetComponent<playTimer>().GetTimeSpent();
+					if(time > 0.4)
+					{
+						GameManager.singleton.
+							partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(
+							GameManager.singleton.partner.GetComponent<PartnerSpeech>().EnterCoastAreaDay);
+					}
+
+					else
+					{
+						GameManager.singleton.
+							partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(
+							GameManager.singleton.partner.GetComponent<PartnerSpeech>().EnterCoastAreaNight);
+					}
+				}
+
 			}
 		}
         //when you go back to ertebølle midden to retrieve tool
@@ -66,8 +96,10 @@ public class EventCatcher : MonoBehaviour {
         //when you enter tribe territory
         if(other.tag == "tribeTerritory")
         {
-
             //partner say something
+			GameManager.singleton.
+				partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(
+				GameManager.singleton.partner.GetComponent<PartnerSpeech>().EnterTribe);
         }
         //when enter torsk territory orca event happens 
         if(other.tag == "torskTerritory")
@@ -75,6 +107,22 @@ public class EventCatcher : MonoBehaviour {
             //partner says orca thing
             GameManager.singleton.orca.GetComponent<orcaEvent>().startOrcaEvent();
         }
+        if(other.tag == "sealTerritory")
+		{
+			if(GameManager.singleton.Islinear)
+			{
+				GameManager.singleton.
+					partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(
+					GameManager.singleton.partner.GetComponent<PartnerSpeech>().SealAppears);
+			}
+			else
+			{
+				GameManager.singleton.
+					partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(
+					GameManager.singleton.partner.GetComponent<PartnerSpeech>().SealAppearsEmergent);
+			}
+		}
+
 		//when the tribe is chasing you to get fish back
 		if(other.tag == "tribeTrigger")
 		{
@@ -84,6 +132,9 @@ public class EventCatcher : MonoBehaviour {
 			GameManager.singleton.RemoveAnyFish(5);
 			//go back to their own midden in bjørnsholm
 			GameManager.singleton.tribeBoat.GetComponent<TribeController>().GetInPosition(GameManager.singleton.bjørnsholm.transform.position);
+			GameManager.singleton.partner.
+				GetComponent<PartnerSpeech>().PartnerSaysSomething(
+				GameManager.singleton.partner.GetComponent<PartnerSpeech>().MeetingTribeCaught);
 		}
 
     }
@@ -103,7 +154,26 @@ public class EventCatcher : MonoBehaviour {
 			GameManager.singleton.PelicanEvent.GetComponentInChildren<orcaEvent>().startOrcaEvent();
             //partner says pelican thing
         }
+        if(other.tag == "tribeTerritory")
+        {
+            //partner say something
+			if(GameManager.singleton.tribeBoat.GetComponent<TribeController>().GetFollowPlayer())
+			{
+				GameManager.singleton.
+					partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(
+					GameManager.singleton.partner.GetComponent<PartnerSpeech>().MeetingTribeEscaped);
+				GameManager.singleton.tribeBoat.GetComponent<TribeController>().SetFollowPlayer(false);
+			}
+			else
+			{
+				GameManager.singleton.
+					partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(
+					GameManager.singleton.partner.GetComponent<PartnerSpeech>().ExitTribe);	
+			}
 
+
+
+        }
 
     }
 
@@ -162,7 +232,15 @@ public class EventCatcher : MonoBehaviour {
 			//Debug.Break();
 			if(GameManager.singleton.Islinear)
 			{
-				GameManager.singleton.partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(GameManager.singleton.partner.GetComponent<PartnerSpeech>().AfterTradingFlint, "Lad os se om der er nogen flere ål i dag");
+				GameManager.singleton.partner.
+					GetComponent<PartnerSpeech>().PartnerSaysSomething(
+					GameManager.singleton.partner.GetComponent<PartnerSpeech>().AfterTradingFlint, "FANG 3 ÅL");
+			}
+			else
+			{
+				GameManager.singleton.partner.
+					GetComponent<PartnerSpeech>().PartnerSaysSomething(
+					GameManager.singleton.partner.GetComponent<PartnerSpeech>().MeeetingTribeTrade);
 			}
 		}
 		DisableTrading();

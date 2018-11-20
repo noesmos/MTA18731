@@ -123,12 +123,19 @@ public class TribeController : MonoBehaviour {
 		toPosition=true;
 	}
 
+	public bool GetFollowPlayer()
+	{
+		return followPlayer;
+	}
+
 	public void SetFollowPlayer(bool input)
 	{
 		Debug.Log("setting follow player to "+input);
 		followPlayer = input;
 		tribeTrigger.GetComponent<Collider>().enabled = input;
-		GameManager.singleton.tradingObject.GetComponent<Collider>().enabled=false;
-		//partner says something, warn you that you should return fish
+		if(input)
+		{
+			GameManager.singleton.tradingObject.GetComponent<Collider>().enabled=false;
+		}
 	}
 }
