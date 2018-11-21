@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
         public static GameManager singleton = null;              //Static instance of GameManager which allows it to be accessed by any other script.                            //Current level number, expressed in game as "Day 1".
 
-        //instanses in the scene
+        //instances in the scene
         
         public GameObject timer;
         public GameObject boat;
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour {
 
 
         public bool Islinear;
-        public List<GameObject> torskArea, eelArea = new List<GameObject>();
+        public List<GameObject> torskArea, eelArea, flatFishArea = new List<GameObject>();
         public GameObject trading;
         public GameObject pillar1,pillar2,pillar3,pillar4,pillar5, currentPillar;
 
@@ -108,6 +108,10 @@ public class GameManager : MonoBehaviour {
                     area.SetActive(false);
                 }
                 foreach(GameObject area in eelArea)
+                {
+                    area.SetActive(false);
+                }
+                foreach(GameObject area in flatFishArea)
                 {
                     area.SetActive(false);
                 }

@@ -12,6 +12,8 @@ public class EventCatcher : MonoBehaviour {
 
 	GameObject fishingAreaObject;
 
+	bool hasFlint=false;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -87,6 +89,31 @@ public class EventCatcher : MonoBehaviour {
 			//GameManager.singleton.hook.GetComponent<SelectTool>().ShowTool();
 			//GameManager.singleton.eeliron.GetComponent<SelectTool>().ShowTool();
 			
+			//change scene
+			if(GameManager.singleton.GetFishCount() >=7)
+			{
+				if(hasFlint)
+				{
+					//enought fish 7 and flint
+				}
+				else
+				{
+					//enough fish 7
+				}
+			}
+			else 
+			{
+				if(hasFlint)
+				{
+					//not enough fish and has flint
+				}
+				else
+				{
+					//not enough fish 7
+
+				}
+			}
+
 		}
 		        //when you destroy a basket
         if(other.tag == "destroyBasket")
@@ -230,6 +257,7 @@ public class EventCatcher : MonoBehaviour {
 			Debug.Log("You have enough fish");
 			GameManager.singleton.RemoveAnyFish(5);
 			Instantiate(GameManager.singleton.flint,transform.position+ transform.up*2 - 1.5f*transform.forward, transform.rotation, transform);
+			hasFlint = true;
 			//Debug.Break();
 			if(GameManager.singleton.Islinear)
 			{
