@@ -31,6 +31,7 @@ TagManager:
   - timer
   - sealTerritory
   - FlatfishArea
+  - pelicanTrigger
   layers:
   - Default
   - TransparentFX

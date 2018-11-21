@@ -3795,7 +3795,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400056, guid: cab6c3162f2033f44847b58ce4ad52c5, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 100056, guid: cab6c3162f2033f44847b58ce4ad52c5, type: 3}
       propertyPath: m_Name
@@ -4428,12 +4428,12 @@ Transform:
     type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 293912232}
-  m_LocalRotation: {x: 0.011337876, y: 0.73624104, z: 0.025304338, w: -0.67615116}
-  m_LocalPosition: {x: 0.18687439, y: 0.26926255, z: 2.7428284}
-  m_LocalScale: {x: 1.0002435, y: 1, z: 1.0002426}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.043998335, y: 0.03699997, z: 0.049001284}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 691090020}
-  m_RootOrder: 8
+  m_Father: {fileID: 2121163530}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &293912234
 MeshRenderer:
@@ -8537,6 +8537,7 @@ GameObject:
   - component: {fileID: 534669904}
   - component: {fileID: 534669903}
   - component: {fileID: 534669906}
+  - component: {fileID: 534669907}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -8621,6 +8622,17 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   maxRaycastHits: 64
+--- !u!114 &534669907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0c0cede895ac754395f34420b7a85b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &541377750
 GameObject:
   m_ObjectHideFlags: 0
@@ -9465,7 +9477,6 @@ GameObject:
   - component: {fileID: 582921139}
   - component: {fileID: 582921138}
   - component: {fileID: 582921141}
-  - component: {fileID: 582921142}
   m_Layer: 10
   m_Name: Cylinder
   m_TagString: Untagged
@@ -9570,58 +9581,7 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 582921142}
-          m_MethodName: onFocus
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 582921142}
-          m_MethodName: Not_onFocus
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
---- !u!114 &582921142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 582921136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 2
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 0
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1 &588609673
 GameObject:
   m_ObjectHideFlags: 0
@@ -10864,8 +10824,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 653915177}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 51.5, y: -9.66, z: 426.1}
-  m_LocalScale: {x: 55.967834, y: 6.4446, z: 116.91732}
+  m_LocalPosition: {x: 71.8, y: -9.66, z: 435.7}
+  m_LocalScale: {x: 133.58961, y: 6.4446, z: 164.73651}
   m_Children: []
   m_Father: {fileID: 2001498335}
   m_RootOrder: 1
@@ -11000,7 +10960,6 @@ Transform:
   - {fileID: 1187028439}
   - {fileID: 1008344515}
   - {fileID: 2121163530}
-  - {fileID: 293912233}
   - {fileID: 1893290786}
   - {fileID: 1363947412}
   - {fileID: 1460966462}
@@ -12243,7 +12202,6 @@ GameObject:
   - component: {fileID: 800030146}
   - component: {fileID: 800030144}
   - component: {fileID: 800030145}
-  - component: {fileID: 800030147}
   m_Layer: 0
   m_Name: Eel Trap
   m_TagString: Untagged
@@ -12307,40 +12265,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 800030147}
-          m_MethodName: onFocus
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 800030147}
-          m_MethodName: Not_onFocus
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
 --- !u!65 &800030146
 BoxCollider:
@@ -12354,23 +12278,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.0650065, y: 1, z: 2.3032794}
   m_Center: {x: 0.5325163, y: 0, z: 1.0655601}
---- !u!114 &800030147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 800030142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 2
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 0
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1 &802712655
 GameObject:
   m_ObjectHideFlags: 0
@@ -15594,7 +15501,6 @@ GameObject:
   - component: {fileID: 1008707523}
   - component: {fileID: 1008707521}
   - component: {fileID: 1008707522}
-  - component: {fileID: 1008707524}
   m_Layer: 0
   m_Name: Eel Trap (Tribe)
   m_TagString: emptyBasket
@@ -15631,40 +15537,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1008707524}
-          m_MethodName: onFocus
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1008707524}
-          m_MethodName: Not_onFocus
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
 --- !u!114 &1008707522
 MonoBehaviour:
@@ -15690,23 +15562,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 2.89}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1008707524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1008707520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 2
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 0
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1 &1010833953
 GameObject:
   m_ObjectHideFlags: 0
@@ -16344,7 +16199,7 @@ GameObject:
   - component: {fileID: 1073569317}
   m_Layer: 0
   m_Name: Animal Event Trigger 2
-  m_TagString: torskTerritory
+  m_TagString: pelicanTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20354,7 +20209,7 @@ Transform:
   - {fileID: 2040595873}
   - {fileID: 890177803}
   m_Father: {fileID: 691090020}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: -0.034, y: 179.09401, z: -0.157}
 --- !u!1 &1374018877
 GameObject:
@@ -20460,7 +20315,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400012, guid: bbaea8b010474dc4199eae7f77c34e63, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: bbaea8b010474dc4199eae7f77c34e63, type: 3}
       propertyPath: m_Controller
@@ -24814,7 +24669,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1649410807}
   m_LocalRotation: {x: -0, y: 0.52506095, z: -0, w: 0.8510647}
-  m_LocalPosition: {x: 123.1, y: -28.2, z: 504.8}
+  m_LocalPosition: {x: 96, y: -28.2, z: 469.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 75768470}
@@ -27416,7 +27271,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1893290786}
   - component: {fileID: 1893290788}
-  - component: {fileID: 1893290790}
   - component: {fileID: 1893290787}
   - component: {fileID: 1893290789}
   m_Layer: 0
@@ -27439,7 +27293,7 @@ Transform:
   m_Children:
   - {fileID: 98235470}
   m_Father: {fileID: 691090020}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0.035, y: -1.098, z: 0.157}
 --- !u!114 &1893290787
 MonoBehaviour:
@@ -27459,40 +27313,6 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1893290789}
           m_MethodName: Select
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1893290790}
-          m_MethodName: onFocus
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1893290790}
-          m_MethodName: Not_onFocus
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -27529,23 +27349,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsTribeBasket: 0
---- !u!114 &1893290790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1893290785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 2
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 0
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1 &1897879120
 GameObject:
   m_ObjectHideFlags: 0
@@ -31196,7 +30999,6 @@ GameObject:
   - component: {fileID: 2121163533}
   - component: {fileID: 2121163531}
   - component: {fileID: 2121163532}
-  - component: {fileID: 2121163534}
   m_Layer: 0
   m_Name: Hook
   m_TagString: hook
@@ -31214,7 +31016,8 @@ Transform:
   m_LocalRotation: {x: 0.011337876, y: 0.73624104, z: 0.025304338, w: -0.67615116}
   m_LocalPosition: {x: 0.23000336, y: 0.22897053, z: 2.7899933}
   m_LocalScale: {x: 1.0002435, y: 1, z: 1.0002426}
-  m_Children: []
+  m_Children:
+  - {fileID: 293912233}
   m_Father: {fileID: 691090020}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: -3.015, y: 85.15401, z: -1.006}
@@ -31259,40 +31062,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2121163534}
-          m_MethodName: set_enabled
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2121163534}
-          m_MethodName: set_enabled
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
 --- !u!65 &2121163533
 BoxCollider:
@@ -31306,23 +31075,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.69114953, y: 0.099999994, z: 0.40000182}
   m_Center: {x: -0.019052714, y: 0.04999978, z: 0.03999987}
---- !u!114 &2121163534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2121163529}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 0.97351444, b: 0, a: 1}
-  outlineWidth: 7.63
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1 &2132147145
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,6 +27,7 @@ public class EventCatcher : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
     {
+		
 		if(other.tag == "pillar1" ||other.tag == "pillar2" ||other.tag == "pillar3"||other.tag == "pillar4"||other.tag == "pillar5")
 		{
 			other.gameObject.SetActive(false);
@@ -154,7 +155,7 @@ public class EventCatcher : MonoBehaviour {
             ExitArea();
         }
         //when exit torsk territory pelican event happens 
-        if(other.tag == "torskTerritory")
+        if(other.tag == "pelicanTrigger")
         {
 			GameManager.singleton.PelicanEvent.SetActive(true);
 			GameManager.singleton.PelicanEvent.transform.SetParent(null);

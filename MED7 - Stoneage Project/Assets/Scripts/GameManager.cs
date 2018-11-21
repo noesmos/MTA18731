@@ -129,6 +129,7 @@ public class GameManager : MonoBehaviour {
                 tribeTerritory.GetComponent<Collider>().enabled = false;
                 basket.GetComponent<Collider>().enabled = false;
                 tribeBasket.GetComponent<Collider>().enabled = false;
+                torskTerritory2.GetComponent<Collider>().enabled = false;
 
                 //totally disable the following game objects
 
@@ -142,7 +143,7 @@ public class GameManager : MonoBehaviour {
                 pillar3.SetActive(false);
                 pillar4.SetActive(false);
                 pillar5.SetActive(false);
-                torskTerritory2.GetComponent<Collider>().enabled = false;
+
                 } catch{}
             audio = GetComponent<AudioSource>();
 
