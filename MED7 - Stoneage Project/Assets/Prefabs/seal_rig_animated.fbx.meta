@@ -34,7 +34,12 @@ ModelImporter:
     7400000: Take 001
     9500000: //RootNode
     13700000: sealmesh
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: seal-animal-png-1
+    second: {fileID: 2800000, guid: 750024c0ab24ed14eb3d3c66d89fbc15, type: 3}
   materials:
     importMaterials: 1
     materialName: 0
@@ -85,7 +90,7 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.22
+    previousCalculatedGlobalScale: 0.19999999
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60

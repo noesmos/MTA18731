@@ -14,7 +14,12 @@ PartnerAnimator PA;
 	// Use this for initialization
 	void Start () {
 		EC = GameManager.singleton.boat.GetComponent<EventCatcher>();
-		PA = GameManager.singleton.partner.GetComponent<PartnerAnimator>();
+		try
+		{
+			PA = GameManager.singleton.partner.GetComponent<PartnerAnimator>();
+		}
+		catch{}
+
 	}
 	
 	// Update is called once per frame
