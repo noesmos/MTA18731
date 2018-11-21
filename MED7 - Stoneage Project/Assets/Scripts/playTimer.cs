@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playTimer : MonoBehaviour {
 
@@ -55,15 +56,26 @@ public class playTimer : MonoBehaviour {
 		transform.eulerAngles = new Vector3 (currentAngle.x,0, 0);
 
 		//Quaternion transform.Euler(currentAngle.x,0f,0f);
-
-		if(time < 0)
+		if(Input.GetKey("m"))
 		{
-			//get the amount of fish caught, compare it to required amount and change scene(or something) according to outcome 
+			Debug.Log("midden");
+			GameManager.singleton.midden.GetComponent<Collider>().enabled = true;
+		}
+
+		if(timeSpent < 0)
+		{
+			// change scene
+			Debug.Log("change scene");
+			//did not make it back in time
+			GameManager.singleton.PrepareForEndScene(
+				GameManager.singleton.partner.GetComponent<PartnerSpeech>().Outcome2Emergent, 
+				GameManager.singleton.boat.GetComponent<EventCatcher>().GetHasFlint());
+			SceneManager.LoadScene("End Scene", LoadSceneMode.Single);
 		}
 		if(!GameManager.singleton.Islinear)
 		{
 			//when there is two minutes left
-			if(timeSpent <=0.4 && twoMinLeft)
+			if(timeSpent <=0.4 && twoMinLeft )
 			{
 				twoMinLeft=false;
 				GameManager.singleton.partner.

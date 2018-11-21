@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EventCatcher : MonoBehaviour {
 
@@ -40,7 +41,7 @@ public class EventCatcher : MonoBehaviour {
 			
 			if(other.tag == "TorskArea" && firstTimeInTorskArea)
 			{
-				firstTimeInTorskArea = false;
+				//firstTimeInTorskArea = false;
 				if(GameManager.singleton.Islinear)
 				{
 					GameManager.singleton.
@@ -56,7 +57,7 @@ public class EventCatcher : MonoBehaviour {
 			}
 			if( other.tag == "EelArea" && firstTimeInEelArea)
 			{
-				firstTimeInEelArea = false;
+				//firstTimeInEelArea = false;
 				if(GameManager.singleton.Islinear)
 				{
 					GameManager.singleton.
@@ -88,31 +89,9 @@ public class EventCatcher : MonoBehaviour {
 		{
 			//GameManager.singleton.hook.GetComponent<SelectTool>().ShowTool();
 			//GameManager.singleton.eeliron.GetComponent<SelectTool>().ShowTool();
-			
+		
 			//change scene
-			if(GameManager.singleton.GetFishCount() >=7)
-			{
-				if(hasFlint)
-				{
-					//enought fish 7 and flint
-				}
-				else
-				{
-					//enough fish 7
-				}
-			}
-			else 
-			{
-				if(hasFlint)
-				{
-					//not enough fish and has flint
-				}
-				else
-				{
-					//not enough fish 7
-
-				}
-			}
+			CheckForEnding();
 
 		}
 		        //when you destroy a basket
@@ -205,6 +184,40 @@ public class EventCatcher : MonoBehaviour {
 
     }
 
+	public void CheckForEnding()
+	{
+		if(GameManager.singleton.GetFishCount() >=7)
+			{
+				if(hasFlint)
+				{
+					//enought fish 7 and flint
+					GameManager.singleton.PrepareForEndScene(GameManager.singleton.partner.GetComponent<PartnerSpeech>().Outcome4Emergent, hasFlint);
+					SceneManager.LoadScene("End Scene", LoadSceneMode.Single);
+				}
+				else
+				{
+					//enough fish 7
+					GameManager.singleton.PrepareForEndScene(GameManager.singleton.partner.GetComponent<PartnerSpeech>().Outcome3Emergent, hasFlint);
+					SceneManager.LoadScene("End Scene", LoadSceneMode.Single);
+				}
+			}
+			else 
+			{
+				if(hasFlint)
+				{
+					//not enough fish and has flint
+					GameManager.singleton.PrepareForEndScene(GameManager.singleton.partner.GetComponent<PartnerSpeech>().Outcome5Emergent, hasFlint);
+					SceneManager.LoadScene("End Scene", LoadSceneMode.Single);
+				}
+				else
+				{
+					//not enough fish 7
+					GameManager.singleton.PrepareForEndScene(GameManager.singleton.partner.GetComponent<PartnerSpeech>().Outcome1Emergent, hasFlint);
+					SceneManager.LoadScene("End Scene", LoadSceneMode.Single);
+
+				}
+			}
+	}
 
 	public void ExitArea()
 	{
@@ -258,6 +271,7 @@ public class EventCatcher : MonoBehaviour {
 			GameManager.singleton.RemoveAnyFish(5);
 			Instantiate(GameManager.singleton.flint,transform.position+ transform.up*2 - 1.5f*transform.forward, transform.rotation, transform);
 			hasFlint = true;
+			DisableTrading();
 			//Debug.Break();
 			if(GameManager.singleton.Islinear)
 			{
@@ -272,7 +286,12 @@ public class EventCatcher : MonoBehaviour {
 					GameManager.singleton.partner.GetComponent<PartnerSpeech>().MeeetingTribeTrade);
 			}
 		}
-		DisableTrading();
+
+	}
+
+	public bool GetHasFlint()
+	{
+		return hasFlint;
 	}
 
 	public bool GetCanFish()

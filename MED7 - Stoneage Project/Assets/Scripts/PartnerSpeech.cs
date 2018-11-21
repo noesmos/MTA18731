@@ -157,7 +157,6 @@ public class PartnerSpeech : MonoBehaviour {
         }
 		else if(!audio.isPlaying && queuedAudio.Count!=0)
 		{
-			Debug.Log("playing queued sound");
 			if(queuedText.Count!=0)
 				{
 					PartnerSaysSomething(queuedAudio[0],queuedText[0]);
@@ -173,7 +172,6 @@ public class PartnerSpeech : MonoBehaviour {
 		else if (audio.isPlaying && donePlaying)
 		{
 			donePlaying=false;
-			Debug.Log("playing again");
 			//Debug.Break();
 
 		}
@@ -184,7 +182,6 @@ public class PartnerSpeech : MonoBehaviour {
 	{
 		if(audio.isPlaying)
 		{
-			Debug.Log("queued audio clio");
 			queuedAudio.Add(clip);
 			queuedText.Add(writtenLine);
 		}
@@ -200,7 +197,6 @@ public class PartnerSpeech : MonoBehaviour {
 	}
 	public void PartnerSaysSomething(AudioClip clip)
 	{
-		Debug.Log("queued audio clio");
 		if(audio.isPlaying)
 		{
 			queuedAudio.Add(clip);

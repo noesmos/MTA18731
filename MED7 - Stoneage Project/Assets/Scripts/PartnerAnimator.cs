@@ -32,6 +32,7 @@ public class PartnerAnimator : MonoBehaviour {
 	{
 		anim.SetTrigger("hookFishing");
 		GameManager.singleton.paddle.SetActive(false);
+		GameManager.singleton.partner.transform.position = GameManager.singleton.partner.transform.position - 0.75f*transform.up;
 	}
 	public void EelironAnimation()
 	{
@@ -126,6 +127,7 @@ public class PartnerAnimator : MonoBehaviour {
 		GameManager.singleton.hook.GetComponent<SelectTool>().ShowTool();
 		GameManager.singleton.paddle.SetActive(true);
 		Debug.Log("Hook ani done");
+		GameManager.singleton.partner.transform.position = GameManager.singleton.partner.transform.position + 0.75f*transform.up;
 		if(GameManager.singleton.boat.GetComponent<EventCatcher>().GetCanFish())
 		{
 			codCaught();
@@ -201,6 +203,7 @@ public class PartnerAnimator : MonoBehaviour {
 				GetComponent<PartnerSpeech>().PartnerSaysSomething(GetComponent<PartnerSpeech>().AfterEmptyBasket, "FANG 3 TORSK");
 			}
 			Debug.Log("Trap Full");
+			basketFull = false;
 		} else {
 			trapEmpty();
 			Debug.Log("Trap Empty");

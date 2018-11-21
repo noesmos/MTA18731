@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
         public static GameManager singleton = null;              //Static instance of GameManager which allows it to be accessed by any other script.                            //Current level number, expressed in game as "Day 1".
@@ -58,6 +59,11 @@ public class GameManager : MonoBehaviour {
         public GameObject midden;
 
 
+        //for change to end scene:
+        AudioSource audio;
+        public Transform spawnPoint;
+        bool hasFlint = false;
+
         //Awake is always called before any Start functions
         void Awake()
         {
@@ -95,7 +101,10 @@ public class GameManager : MonoBehaviour {
             //Debug.Log(orca.gameObject.name);
             PelicanEvent = GameObject.FindGameObjectWithTag("flyingPelican");
             //Debug.Log(PelicanEvent.gameObject.name);
+            try{
             PelicanEvent.SetActive(false);
+            }catch{}
+
             
             currentPillar = boat;
 
@@ -118,7 +127,6 @@ public class GameManager : MonoBehaviour {
                 torskTerritory.GetComponent<Collider>().enabled = false;
                 eelTerritory.GetComponent<Collider>().enabled = false;
                 tribeTerritory.GetComponent<Collider>().enabled = false;
-                midden.GetComponent<Collider>().enabled = false;
                 basket.GetComponent<Collider>().enabled = false;
                 tribeBasket.GetComponent<Collider>().enabled = false;
 
@@ -127,12 +135,18 @@ public class GameManager : MonoBehaviour {
                 tribeBasket.SetActive(false);
             }
             //what should be turned of initially for both condition
+                try{
+                midden.GetComponent<Collider>().enabled = false;
                 pillar1.SetActive(false);
                 pillar2.SetActive(false);
                 pillar3.SetActive(false);
                 pillar4.SetActive(false);
                 pillar5.SetActive(false);
                 torskTerritory2.GetComponent<Collider>().enabled = false;
+                } catch{}
+            audio = GetComponent<AudioSource>();
+
+                
         } 
         
         //Update is called every frame.
@@ -246,4 +260,31 @@ public class GameManager : MonoBehaviour {
             isCountingEel=true;
             startEelAmount = currentEelAmount;
         } 
+
+        void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+        void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            /*Debug.Log("i am in end scene");
+            Debug.Log("OnSceneLoaded: " + scene.name); */
+            audio.Play();
+            foreach( GameObject fish in caughtTotal)
+            {
+                Instantiate(fish,new Vector3(-89.575f,3.714f,162.73f), gameObject.transform.rotation);
+            }
+            if(hasFlint)
+            {
+                Instantiate(flint,new Vector3(-89.575f,3.714f,162.73f),gameObject.transform.rotation);
+            }
+        }
+
+        public void PrepareForEndScene(AudioClip clip, bool hasFlint)
+        {
+            
+            audio.clip = clip;
+            this.hasFlint = hasFlint;
+        }
+
 }
