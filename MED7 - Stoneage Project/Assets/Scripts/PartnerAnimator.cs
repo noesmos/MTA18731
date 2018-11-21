@@ -156,7 +156,16 @@ public class PartnerAnimator : MonoBehaviour {
 		if(GameManager.singleton.boat.GetComponent<EventCatcher>().GetCanFish())
 		{
 			eelCaught();
-			PutEelInBasket();
+			if(GameManager.singleton.boat.GetComponent<EventCatcher>().GetCurrentFishingArea().tag == "EelArea")
+			{
+				
+				PutEelInBasket();
+			}
+			else if(GameManager.singleton.boat.GetComponent<EventCatcher>().GetCurrentFishingArea().tag == "FlatfishArea")
+			{
+				PutFlatFishInBasket();
+			}
+
 		} else {
 			noCatch();
 		}

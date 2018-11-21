@@ -61,22 +61,24 @@ public class playTimer : MonoBehaviour {
 			//get the amount of fish caught, compare it to required amount and change scene(or something) according to outcome 
 		}
 		if(!GameManager.singleton.Islinear)
-		//when there is two minutes left
-		Debug.Log("timer:" + timeSpent);
-		if(timeSpent <=0.4 && twoMinLeft)
 		{
-			twoMinLeft=false;
-			GameManager.singleton.partner.
-				GetComponent<PartnerSpeech>().PartnerSaysSomething(
-				GameManager.singleton.partner.GetComponent<PartnerSpeech>().Time2MinLeft);
-		}
-		//when there is onr minutes left
-		if(timeSpent <=0.2 && oneMinLeft)
-		{
-			oneMinLeft =  false;
-			GameManager.singleton.partner.
-				GetComponent<PartnerSpeech>().PartnerSaysSomething(
-				GameManager.singleton.partner.GetComponent<PartnerSpeech>().Time1MinLeft);
+			//when there is two minutes left
+			if(timeSpent <=0.4 && twoMinLeft)
+			{
+				twoMinLeft=false;
+				GameManager.singleton.partner.
+					GetComponent<PartnerSpeech>().PartnerSaysSomething(
+					GameManager.singleton.partner.GetComponent<PartnerSpeech>().Time2MinLeft);
+				GameManager.singleton.midden.GetComponent<Collider>().enabled = true;
+			}
+			//when there is onr minutes left
+			if(timeSpent <=0.2 && oneMinLeft)
+			{
+				oneMinLeft =  false;
+				GameManager.singleton.partner.
+					GetComponent<PartnerSpeech>().PartnerSaysSomething(
+					GameManager.singleton.partner.GetComponent<PartnerSpeech>().Time1MinLeft);
+			}
 		}
 	}
 

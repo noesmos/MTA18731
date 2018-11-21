@@ -58,7 +58,7 @@ public class BoatControllerScript : MonoBehaviour {
 				sinusoid = 0.2f;
 			}
 			GetComponent<Rigidbody>().AddForce(transform.forward * speed * sinusoid);
-			Debug.Log(sinusoid);
+			//Debug.Log(sinusoid);
 		}
 	}
 

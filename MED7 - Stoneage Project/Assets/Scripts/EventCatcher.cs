@@ -29,7 +29,7 @@ public class EventCatcher : MonoBehaviour {
 			other.gameObject.SetActive(false);
 		}
 		//when you enter a fishing area
-		if(other.tag == "TorskArea" || other.tag == "EelArea")
+		if(other.tag == "TorskArea" || other.tag == "EelArea" || other.tag == "FlatfishArea")
 		{
 			canFish = true;
 			fishingArea = other.tag;
@@ -84,8 +84,9 @@ public class EventCatcher : MonoBehaviour {
         //when you go back to ertebølle midden to retrieve tool
 		if(other.tag == "ertebølle")
 		{
-			GameManager.singleton.hook.GetComponent<SelectTool>().ShowTool();
-			GameManager.singleton.eeliron.GetComponent<SelectTool>().ShowTool();
+			//GameManager.singleton.hook.GetComponent<SelectTool>().ShowTool();
+			//GameManager.singleton.eeliron.GetComponent<SelectTool>().ShowTool();
+			
 		}
 		        //when you destroy a basket
         if(other.tag == "destroyBasket")

@@ -30,6 +30,7 @@ TagManager:
   - paddle
   - timer
   - sealTerritory
+  - FlatfishArea
   layers:
   - Default
   - TransparentFX

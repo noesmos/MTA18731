@@ -64,12 +64,17 @@ public class PartnerSpeech : MonoBehaviour {
 	[Header(" sounds")]
 
 	public Text speech;
+	List<AudioClip> queuedAudio = new List<AudioClip>();
+	List<string> queuedText = new List<string>();
 
-	bool donePlaying;
+
+
+	bool donePlaying =true;
 	// Use this for initialization
 	void Start () {
 		audio = GetComponent<AudioSource>();
 
+		PartnerSaysSomething(StartofGame);
 		speech.text = "";
 		if(GameManager.singleton.Islinear)
 		{
@@ -85,6 +90,7 @@ public class PartnerSpeech : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+
 		if (!audio.isPlaying && !donePlaying)
         {
             //Debug.Log(audio.clip.name);
@@ -149,6 +155,21 @@ public class PartnerSpeech : MonoBehaviour {
 				GameManager.singleton.midden.GetComponent<Collider>().enabled = true;
 			}
         }
+		else if(!audio.isPlaying && queuedAudio.Count!=0)
+		{
+			Debug.Log("playing queued sound");
+			if(queuedText.Count!=0)
+				{
+					PartnerSaysSomething(queuedAudio[0],queuedText[0]);
+					queuedAudio.Remove(queuedAudio[0]);
+					queuedText.Remove(queuedText[0]);
+				}
+				else 
+				{
+					PartnerSaysSomething(queuedAudio[0]);
+					queuedAudio.Remove(queuedAudio[0]);
+				}
+		}
 		else if (audio.isPlaying && donePlaying)
 		{
 			donePlaying=false;
@@ -161,18 +182,36 @@ public class PartnerSpeech : MonoBehaviour {
 
 	public void PartnerSaysSomething(AudioClip clip, string writtenLine)
 	{
-		GetComponent<PartnerAnimator>().StartTalking();
-		audio.clip = clip;
-		speech.text = writtenLine;
-		audio.Play();
-		//Debug.Break();
+		if(audio.isPlaying)
+		{
+			Debug.Log("queued audio clio");
+			queuedAudio.Add(clip);
+			queuedText.Add(writtenLine);
+		}
+		else
+		{
+			GetComponent<PartnerAnimator>().StartTalking();
+			audio.clip = clip;
+			speech.text = writtenLine;
+			audio.Play();
+			
+		}
+
 	}
-		public void PartnerSaysSomething(AudioClip clip)
+	public void PartnerSaysSomething(AudioClip clip)
 	{
-		GetComponent<PartnerAnimator>().StartTalking();
-		audio.clip = clip;
-		audio.Play();
-		//Debug.Break();
+		Debug.Log("queued audio clio");
+		if(audio.isPlaying)
+		{
+			queuedAudio.Add(clip);
+		}
+		else
+		{
+			GetComponent<PartnerAnimator>().StartTalking();
+			audio.clip = clip;
+			audio.Play();
+		}
+
 	}
 
 }

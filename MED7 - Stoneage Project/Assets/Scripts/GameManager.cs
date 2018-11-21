@@ -96,7 +96,8 @@ public class GameManager : MonoBehaviour {
             PelicanEvent = GameObject.FindGameObjectWithTag("flyingPelican");
             //Debug.Log(PelicanEvent.gameObject.name);
             PelicanEvent.SetActive(false);
-
+            
+            currentPillar = boat;
 
             //what should be turned of initially for the linear condition
             if(Islinear)
