@@ -106,7 +106,7 @@ public class BoatControllerScript : MonoBehaviour {
 
 			if(	GameManager.singleton.partner.GetComponent<PartnerAnimator>().anim.GetCurrentAnimatorStateInfo(0).IsTag("default") || GameManager.singleton.partner.GetComponent<PartnerAnimator>().anim.GetCurrentAnimatorStateInfo(0).IsTag("paddling"))
 			{
-				GetComponent<Rigidbody>().AddForce(transform.forward * speed * sinusoid);
+				GetComponent<Rigidbody>().AddForce(transform.forward * speed * sinusoid*Time.deltaTime);
 			}
 
 			float rotationAngle = Vector3.Angle(transform.forward, Camera.main.transform.forward);
@@ -114,7 +114,7 @@ public class BoatControllerScript : MonoBehaviour {
 			if (rotationAngle > 5)
 			{
 
-				Vector3 newDir = Vector3.RotateTowards(transform.forward, new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z), 0.001f * rotationAngle, 0.0f);
+				Vector3 newDir = Vector3.RotateTowards(transform.forward, new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z), Time.deltaTime * rotationAngle, 0.0f);
 				
 				// calculate the Quaternion for the rotation
 				Quaternion rot = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(newDir), rotationSpeed);
