@@ -5,8 +5,8 @@ using UnityEngine;
 [RequireComponent (typeof (FloatingObject))]
 public class BoatControllerScript : MonoBehaviour {
 
-	public float speed = 0.2f;
-	public float rotationSpeed = 160f;
+	public float speed = 15f;
+	public float rotationSpeed = 0.1f;
 
 	float verticalInput;
 	float horizontalInput;
@@ -108,20 +108,21 @@ public class BoatControllerScript : MonoBehaviour {
 			{
 				GetComponent<Rigidbody>().AddForce(transform.forward * speed * sinusoid);
 			}
-			
 
-			if (Vector3.Angle(transform.forward, Camera.main.transform.forward) > 5)
+			float rotationAngle = Vector3.Angle(transform.forward, Camera.main.transform.forward);
+
+			if (rotationAngle > 5)
 			{
-				// The step size is equal to speed times frame time.
-				float step = rotationSpeed * Time.deltaTime;
 
-				Vector3 newDir = Vector3.RotateTowards(transform.forward, new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z), step, 0.0f);
+				Vector3 newDir = Vector3.RotateTowards(transform.forward, new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z), 0.001f * rotationAngle, 0.0f);
 				
 				// calculate the Quaternion for the rotation
-				Quaternion rot = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(newDir), rotationSpeed * Time.deltaTime);
+				Quaternion rot = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(newDir), rotationSpeed);
 				
 				//Apply the rotation 
 				transform.rotation = rot;
+
+				Debug.Log(rot);
 			}
 			//Debug.Log(Vector3.Angle(transform.forward, Camera.main.transform.forward));
 		}
