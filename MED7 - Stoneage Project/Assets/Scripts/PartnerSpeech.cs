@@ -82,7 +82,7 @@ public class PartnerSpeech : MonoBehaviour {
 		}
 		else
 		{
-			PartnerSaysSomething(StartofGameEmergent, "NY Tekst");
+			PartnerSaysSomething(StartofGameEmergent, "");
 		}
 
 	}

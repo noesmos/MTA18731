@@ -17,7 +17,8 @@ public class GameManager : MonoBehaviour {
         public GameObject orca;
         public GameObject bjørnsholm;
         public GameObject PelicanEvent;
-        
+        public GameObject spawnPoint;
+
         //prefabs
         public GameObject torsk;
 	    public GameObject eel;
@@ -61,7 +62,6 @@ public class GameManager : MonoBehaviour {
 
         //for change to end scene:
         AudioSource audio;
-        public Transform spawnPoint;
         bool hasFlint = false;
 
         //Awake is always called before any Start functions
@@ -169,7 +169,7 @@ public class GameManager : MonoBehaviour {
                 
                 if(currentEelAmount-startEelAmount>=3)
                 {
-                    partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(partner.GetComponent<PartnerSpeech>().AfterFlaringEel, "Lad os tage hjem igen");
+                    partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(partner.GetComponent<PartnerSpeech>().AfterFlaringEel, "TAG TILBAGE TIL MØDDINGEN");
                 }
             }
 
@@ -195,7 +195,7 @@ public class GameManager : MonoBehaviour {
                 else if(currentTorskAmount-startTorskAmount>=3)
                 {
 
-                    partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(partner.GetComponent<PartnerSpeech>().AfterCodCatch, "Lad os Bytte nogen fisk for flint");
+                    partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(partner.GetComponent<PartnerSpeech>().AfterCodCatch, " BYT FISK FOR FLINT");
                 }
             }
         }

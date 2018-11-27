@@ -52,7 +52,7 @@ LightmapSettings:
     m_AlbedoBoost: 1
     m_TemporalCoherenceThreshold: 1
     m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 1
+    m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
     serializedVersion: 10
@@ -5117,7 +5117,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: next timef
+  m_Text: 
 --- !u!222 &350137111
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8565,7 +8565,7 @@ Camera:
   m_projectionMatrixMode: 2
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 12
+  m_FocalLength: 13.095703
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -8573,8 +8573,8 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.03
-  far clip plane: 500
-  field of view: 90
+  far clip plane: 700
+  field of view: 85
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -8628,7 +8628,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0c0cede895ac754395f34420b7a85b8, type: 3}
   m_Name: 
@@ -10621,6 +10621,34 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 628214209}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &644873808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 644873809}
+  m_Layer: 0
+  m_Name: spawn point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &644873809
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 644873808}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.36, y: 2.15, z: 5.61}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 691090020}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &646874539
 GameObject:
   m_ObjectHideFlags: 0
@@ -10964,6 +10992,7 @@ Transform:
   - {fileID: 1363947412}
   - {fileID: 1460966462}
   - {fileID: 1380562100}
+  - {fileID: 644873809}
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10992,8 +11021,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.361996, y: 13.766758, z: 15.101654}
-  m_Center: {x: -0.39514577, y: -6.1290283, z: 7.065506}
+  m_Size: {x: 2.361996, y: 12.138811, z: 15.101654}
+  m_Center: {x: -0.39514577, y: -6.9430017, z: 7.065506}
 --- !u!114 &691090023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11016,15 +11045,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d7049fa0f88a40488ee1d7cbfb7e23e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1500
-  rotationSpeed: 0.01
+  speed: 900
+  rotationSpeed: 0.012
 --- !u!23 &691090025
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 691090019}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -15867,6 +15896,7 @@ MonoBehaviour:
   orca: {fileID: 0}
   "bj\xF8rnsholm": {fileID: 0}
   PelicanEvent: {fileID: 0}
+  spawnPoint: {fileID: 644873808}
   torsk: {fileID: 1421292923936632, guid: 68ef6310289c48543b2bbce819b2f643, type: 2}
   eel: {fileID: 1672999333881692, guid: ac07141994952504d8aba2fbd7983871, type: 2}
   flatFish: {fileID: 1543670651725586, guid: d4027a510985b4d48b34481b2e0447eb, type: 2}
@@ -15875,7 +15905,7 @@ MonoBehaviour:
   aniTorch: {fileID: 327457387}
   aniEelIron: {fileID: 1919087770}
   paddle: {fileID: 0}
-  Islinear: 0
+  Islinear: 1
   torskArea:
   - {fileID: 372945721}
   eelArea:
@@ -15897,7 +15927,6 @@ MonoBehaviour:
   basket: {fileID: 800030142}
   tribeBasket: {fileID: 1008707520}
   midden: {fileID: 83509190}
-  spawnPoint: {fileID: 0}
 --- !u!82 &1044151179
 AudioSource:
   m_ObjectHideFlags: 0
@@ -19850,7 +19879,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.00018986
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 2}
       propertyPath: m_LocalPosition.y
@@ -19858,7 +19887,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -0.15
+      value: -0.14982
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 2}
       propertyPath: m_LocalRotation.x
@@ -19882,7 +19911,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 2}
       propertyPath: m_LocalScale.x
-      value: 1500
+      value: 916.755
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 2}
       propertyPath: m_LocalScale.y
@@ -19890,7 +19919,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 2}
       propertyPath: m_LocalScale.z
-      value: 1500
+      value: 916.755
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 2}
       propertyPath: waterMode
@@ -24309,8 +24338,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startValue: 20
-  endValue: -40
-  totalPlayTime: 300
+  endValue: -30
+  totalPlayTime: 480
 --- !u!1 &1628029374
 GameObject:
   m_ObjectHideFlags: 0

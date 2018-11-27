@@ -19,7 +19,7 @@ public class PartnerAnimator : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator>();
-		boat = GameManager.singleton.boat;
+		boat = GameManager.singleton.spawnPoint;
 	}
 	
 	// Update is called once per frame
@@ -224,6 +224,7 @@ public class PartnerAnimator : MonoBehaviour {
 		//instatiate a fish in the boay
 		mostRecentFish = Instantiate(GameManager.singleton.flatFish,boat.transform.position+ new Vector3(0,1,0), boat.transform.rotation, boat.transform);
 		GameManager.singleton.AddFlatFish(mostRecentFish);
+		
 	}
 	public void PutTorskInBasket()
 	{
