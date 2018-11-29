@@ -100,7 +100,7 @@ public abstract class GvrBasePointer : MonoBehaviour, IGvrControllerInputDeviceR
 #if UNITY_EDITOR
   /// Determines if the rays used for raycasting will be drawn in the editor.
   [Tooltip("Determines if the rays used for raycasting will be drawn in the editor.")]
-  public bool drawDebugRays = false;
+  public bool drawDebugRays = true;
 #endif  // UNITY_EDITOR
 
   /// Convenience function to access what the pointer is currently hitting.

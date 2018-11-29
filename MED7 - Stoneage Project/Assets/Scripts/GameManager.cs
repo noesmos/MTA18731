@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour {
         int startEelAmount;
         int currentEelAmount=0;
 
+        public bool pointingAtInteractable = false;
 
         public bool Islinear;
         public List<GameObject> torskArea, eelArea, flatFishArea = new List<GameObject>();
@@ -153,7 +154,7 @@ public class GameManager : MonoBehaviour {
         //Update is called every frame.
         void Update()
         {
-            
+            Debug.Log(pointingAtInteractable);
         }
 
         public void AddEel(GameObject eel)

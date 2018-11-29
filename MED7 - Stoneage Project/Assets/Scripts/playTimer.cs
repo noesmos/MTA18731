@@ -16,6 +16,13 @@ public class playTimer : MonoBehaviour {
 	float time;
 	float timeSpent=0;
 
+	public Material skyBox;
+
+	public float skyboxAngle;
+	public float skyboxExposure;
+
+	// 360 -> 345
+
 	//talking booleans
 	bool oneMinLeft=true;
 	bool twoMinLeft=true;
@@ -25,7 +32,7 @@ public class playTimer : MonoBehaviour {
 	void Start () {
 	time = totalPlayTime;
 
-		Vector3 startAngle = new Vector3(startValue,0,0);	
+		Vector3 startAngle = new Vector3(startValue,23,3);	
 		Vector3 endAngle = new Vector3(endValue,0,0);
 	}
 	
@@ -35,14 +42,20 @@ public class playTimer : MonoBehaviour {
 		time =  time - Time.deltaTime;
 		timeSpent = time/totalPlayTime;
 
+		skyBox.SetFloat("_RotationZ", skyboxAngle);
+		skyBox.SetFloat("_Exposure", skyboxExposure);
+
 		transform.rotation = Quaternion.Euler(startAngle);
 
 		//Debug.Log(timeSpent);
 		//Debug.Log(currentAngle.x);
 		if(timeSpent > 0)
 		{
+			Debug.Log(currentAngle.x + " -- " + timeSpent);
+			skyboxAngle = (timeSpent)*380 + (1-timeSpent)*345;
+			skyboxExposure = (timeSpent)*(float)1 + (1-timeSpent)*(float)0.5;
 			currentAngle.x = (timeSpent)*startValue + (1-timeSpent)*endValue;
-			GetComponentInChildren<Light>().intensity=timeSpent;
+			GetComponentInChildren<Light>().intensity=(timeSpent)*(float)1.2;
 		}
 		else
 		{
@@ -53,7 +66,7 @@ public class playTimer : MonoBehaviour {
 		//transform.rotation = Quaternion.Lerp(Quaternion.Euler(startAngle),Quaternion.Euler(endAngle), timeSpent);
 		//transform.eulerAngles = new Vector3(currentAngle.x, 0, 0);
 		//Debug.Log(currentAngle.x);
-		transform.eulerAngles = new Vector3 (currentAngle.x,0, 0);
+		transform.eulerAngles = new Vector3 (currentAngle.x,23, 3);
 
 		//Quaternion transform.Euler(currentAngle.x,0f,0f);
 		if(Input.GetKey("m"))
