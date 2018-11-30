@@ -44,10 +44,10 @@ public class GameManager : MonoBehaviour {
         //linear stuff
         bool isCountingTorsk = false;
         int startTorskAmount;
-        int currentTorskAmount=0;
+        public int currentTorskAmount=0;
         bool isCountingEel = false;
         int startEelAmount;
-        int currentEelAmount=0;
+        public int currentEelAmount=0;
 
         public bool pointingAtInteractable = false;
 
@@ -187,11 +187,11 @@ public class GameManager : MonoBehaviour {
                 Debug.Log("checking for torsk caught");
                 if(currentTorskAmount-startTorskAmount==1)
                 {
-                    partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(partner.GetComponent<PartnerSpeech>().CodTwoMore);
+                    partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(partner.GetComponent<PartnerSpeech>().CodTwoMore, "FANG 2 TORSK");
                 }
                 else if(currentTorskAmount-startTorskAmount==2)
                 {
-                    partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(partner.GetComponent<PartnerSpeech>().CodOneMore);
+                    partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(partner.GetComponent<PartnerSpeech>().CodOneMore, "FANG 1 TORSK");
                 }
                 else if(currentTorskAmount-startTorskAmount>=3)
                 {

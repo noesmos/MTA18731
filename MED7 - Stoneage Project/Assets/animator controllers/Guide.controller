@@ -1174,7 +1174,7 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 76252879d3588e749ab87d12a0163740, type: 3}
-  m_Tag: 
+  m_Tag: pointLeft
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
@@ -1387,7 +1387,7 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 3ab560950a7ff5147b3cd986877aee71, type: 3}
-  m_Tag: 
+  m_Tag: pointRight
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 

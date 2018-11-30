@@ -51,7 +51,6 @@ public class playTimer : MonoBehaviour {
 		//Debug.Log(currentAngle.x);
 		if(timeSpent > 0)
 		{
-			Debug.Log(currentAngle.x + " -- " + timeSpent);
 			skyboxAngle = (timeSpent)*380 + (1-timeSpent)*345;
 			skyboxExposure = (timeSpent)*(float)1 + (1-timeSpent)*(float)0.5;
 			currentAngle.x = (timeSpent)*startValue + (1-timeSpent)*endValue;

@@ -32,6 +32,7 @@ TagManager:
   - sealTerritory
   - FlatfishArea
   - pelicanTrigger
+  - basket
   layers:
   - Default
   - TransparentFX

@@ -131,7 +131,7 @@ public class PartnerAnimator : MonoBehaviour {
 		if(GameManager.singleton.boat.GetComponent<EventCatcher>().GetCanFish())
 		{
 			codCaught();
-			PutTorskInBasket();	
+			PutTorskInBasket(1);
 		} else {
 			noCatch();
 		}
@@ -161,11 +161,11 @@ public class PartnerAnimator : MonoBehaviour {
 			if(GameManager.singleton.boat.GetComponent<EventCatcher>().GetCurrentFishingArea().tag == "EelArea")
 			{
 				
-				PutEelInBasket();
+				PutEelInBasket(1);
 			}
 			else if(GameManager.singleton.boat.GetComponent<EventCatcher>().GetCurrentFishingArea().tag == "FlatfishArea")
 			{
-				PutFlatFishInBasket();
+				PutFlatFishInBasket(1);
 			}
 
 		} else {
@@ -185,19 +185,15 @@ public class PartnerAnimator : MonoBehaviour {
 		if (basketFull)
 		{
 			trapFull();
+
+			Debug.Log("putting fish in basket");
+			//PutEelInBasket();
+			PutEelInBasket(4);
 			
-			for(int i =0; i < 4; i++)
-			{
-				Debug.Log("putting fish in basket");
-				//PutEelInBasket();
-				PutEelInBasket();
-			}
-			for(int i =0; i < 2; i++)
-			{
-				Debug.Log("putting fish in basket");
-				//PutEelInBasket();
-				PutFlatFishInBasket();
-			}
+			Debug.Log("putting fish in basket");
+			//PutEelInBasket();
+			PutFlatFishInBasket(2);
+			
 			if(GameManager.singleton.Islinear)
 			{
 				GetComponent<PartnerSpeech>().PartnerSaysSomething(GetComponent<PartnerSpeech>().AfterEmptyBasket, "FANG 3 TORSK");
@@ -210,8 +206,9 @@ public class PartnerAnimator : MonoBehaviour {
 		}
 
 	}
-	public void PutFlatFishInBasket()
+	public void PutFlatFishInBasket(float amount)
 	{
+		GameObject currentFish;
 		if(!GameManager.singleton.Islinear && GameManager.singleton.tribeBoat.GetComponent<TribeController>().GetFollowPlayer())
 		{
 			GetComponent<PartnerSpeech>().PartnerSaysSomething(GetComponent<PartnerSpeech>().MeetingTriibeStoleFish);
@@ -222,12 +219,28 @@ public class PartnerAnimator : MonoBehaviour {
 			GetComponent<PartnerSpeech>().PartnerSaysSomething(GetComponent<PartnerSpeech>().FirstTimeFlatFish);
 		}
 		//instatiate a fish in the boay
-		mostRecentFish = Instantiate(GameManager.singleton.flatFish,boat.transform.position+ new Vector3(0,1,0), boat.transform.rotation, boat.transform);
+		for (int i = 1; i < amount+1; i++)
+		{
+
+			Transform[] trans = GameObject.FindGameObjectWithTag("basket").GetComponentsInChildren<Transform>(true);
+			foreach (Transform t in trans) {
+				if (t.gameObject.name == "flatfish_Caught_0"+i) 
+				{
+					currentFish = t.gameObject;
+					currentFish.SetActive(true);
+					Debug.Log(currentFish);
+				}
+			}
+			
+		}
+		//mostRecentFish = Instantiate(GameManager.singleton.flatFish,boat.transform.position+ new Vector3(0,1,0), boat.transform.rotation, boat.transform);
 		GameManager.singleton.AddFlatFish(mostRecentFish);
 		
 	}
-	public void PutTorskInBasket()
+	public void PutTorskInBasket(float amount)
 	{
+		amount = amount + GameManager.singleton.currentTorskAmount;
+		GameObject currentFish;
 		if(!GameManager.singleton.Islinear && GameManager.singleton.tribeBoat.GetComponent<TribeController>().GetFollowPlayer())
 		{
 			GetComponent<PartnerSpeech>().PartnerSaysSomething(GetComponent<PartnerSpeech>().MeetingTriibeStoleFish);
@@ -238,11 +251,27 @@ public class PartnerAnimator : MonoBehaviour {
 			GetComponent<PartnerSpeech>().PartnerSaysSomething(GetComponent<PartnerSpeech>().FirstTimeCod);
 		}
 		//instatiate a fish in the boay
-		mostRecentFish = Instantiate(GameManager.singleton.torsk,boat.transform.position+ new Vector3(0,1,0), boat.transform.rotation, boat.transform);
+		for (int i = 1; i < amount+1; i++)
+		{
+
+			Transform[] trans = GameObject.FindGameObjectWithTag("basket").GetComponentsInChildren<Transform>(true);
+			foreach (Transform t in trans) {
+				if (t.gameObject.name == "torsk_Caught_0"+i) 
+				{
+					currentFish = t.gameObject;
+					currentFish.SetActive(true);
+					Debug.Log(currentFish);
+				}
+			}
+			
+		}
+		//mostRecentFish = Instantiate(GameManager.singleton.torsk,boat.transform.position+ new Vector3(0,1,0), boat.transform.rotation, boat.transform);
 		GameManager.singleton.AddTorsk(mostRecentFish);
 	}
-	public void PutEelInBasket()
+	public void PutEelInBasket(float amount)
 	{
+		amount = amount + GameManager.singleton.currentEelAmount;
+		GameObject currentFish;
 		if(!GameManager.singleton.Islinear && GameManager.singleton.tribeBoat.GetComponent<TribeController>().GetFollowPlayer())
 		{
 			GetComponent<PartnerSpeech>().PartnerSaysSomething(GetComponent<PartnerSpeech>().MeetingTriibeStoleFish);
@@ -253,7 +282,21 @@ public class PartnerAnimator : MonoBehaviour {
 			GetComponent<PartnerSpeech>().PartnerSaysSomething(GetComponent<PartnerSpeech>().FirstTimeEel);
 		}
 		//instatiate a fish in the boay
-		mostRecentFish = Instantiate(GameManager.singleton.eel,boat.transform.position + new Vector3(0,1,0), boat.transform.rotation, boat.transform);
+		for (int i = 1; i < amount+1; i++)
+		{
+
+			Transform[] trans = GameObject.FindGameObjectWithTag("basket").GetComponentsInChildren<Transform>(true);
+			foreach (Transform t in trans) {
+				if (t.gameObject.name == "eel_Caught_0"+i) 
+				{
+					currentFish = t.gameObject;
+					currentFish.SetActive(true);
+					Debug.Log(currentFish);
+				}
+			}
+			
+		}
+		//mostRecentFish = Instantiate(GameManager.singleton.eel,boat.transform.position + new Vector3(0,1,0), boat.transform.rotation, boat.transform);
 		GameManager.singleton.AddEel(mostRecentFish);
 	}
 	void ResetToolOnGuide()

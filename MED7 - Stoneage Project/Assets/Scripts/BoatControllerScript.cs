@@ -84,7 +84,6 @@ public class BoatControllerScript : MonoBehaviour {
 			if (Vector3.Distance(GameManager.singleton.currentPillar.transform.position, transform.position) > 150)
 			{
 				float wrongWayAngle = Vector3.SignedAngle(transform.forward, new Vector3(GameManager.singleton.currentPillar.transform.position.x, 0, GameManager.singleton.currentPillar.transform.position.z) - transform.position, Vector3.up);
-				Debug.Log(Vector3.SignedAngle(transform.forward, new Vector3(GameManager.singleton.currentPillar.transform.position.x, 0, GameManager.singleton.currentPillar.transform.position.z) - transform.position, Vector3.up));
 				if(wrongWayAngle > 90)
 				{
 					// Right
@@ -104,12 +103,14 @@ public class BoatControllerScript : MonoBehaviour {
 			
 			}
 
-			if(!GameManager.singleton.pointingAtInteractable)
+			if((!GameManager.singleton.pointingAtInteractable) && 
+			GameManager.singleton.partner.GetComponent<PartnerAnimator>().anim.GetCurrentAnimatorStateInfo(0).IsTag("default") || 
+			GameManager.singleton.partner.GetComponent<PartnerAnimator>().anim.GetCurrentAnimatorStateInfo(0).IsTag("paddling") ||
+			GameManager.singleton.partner.GetComponent<PartnerAnimator>().anim.GetCurrentAnimatorStateInfo(0).IsTag("pointLeft") ||
+			GameManager.singleton.partner.GetComponent<PartnerAnimator>().anim.GetCurrentAnimatorStateInfo(0).IsTag("pointRight"))
 			{
-				if(	GameManager.singleton.partner.GetComponent<PartnerAnimator>().anim.GetCurrentAnimatorStateInfo(0).IsTag("default") || GameManager.singleton.partner.GetComponent<PartnerAnimator>().anim.GetCurrentAnimatorStateInfo(0).IsTag("paddling"))
-				{
-					GetComponent<Rigidbody>().AddForce(transform.forward * speed * sinusoid*Time.deltaTime);
-				}
+
+				GetComponent<Rigidbody>().AddForce(transform.forward * speed * sinusoid*Time.deltaTime);
 
 				float rotationAngle = Vector3.Angle(transform.forward, Camera.main.transform.forward);
 
@@ -124,7 +125,6 @@ public class BoatControllerScript : MonoBehaviour {
 					//Apply the rotation 
 					transform.rotation = rot;
 
-					Debug.Log(rot);
 				}
 			}
 			//Debug.Log(Vector3.Angle(transform.forward, Camera.main.transform.forward));
