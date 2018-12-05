@@ -7,12 +7,15 @@ public class BoatControllerScript : MonoBehaviour {
 
 	public float speed = 15f;
 	public float rotationSpeed = 0.1f;
+	public Collider[] ignoreCollision;
 
 	float verticalInput;
 	float horizontalInput;
 	float steerFactor;
 
 	private bool outOfBounds = false;
+
+
 	
 	// Update is called once per frame
 	void Update () {

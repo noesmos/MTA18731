@@ -229,12 +229,13 @@ public class PartnerAnimator : MonoBehaviour {
 					currentFish = t.gameObject;
 					currentFish.SetActive(true);
 					Debug.Log(currentFish);
+					GameManager.singleton.AddFlatFish(mostRecentFish);
 				}
 			}
 			
 		}
 		//mostRecentFish = Instantiate(GameManager.singleton.flatFish,boat.transform.position+ new Vector3(0,1,0), boat.transform.rotation, boat.transform);
-		GameManager.singleton.AddFlatFish(mostRecentFish);
+		
 		
 	}
 	public void PutTorskInBasket(float amount)
@@ -261,14 +262,14 @@ public class PartnerAnimator : MonoBehaviour {
 					currentFish = t.gameObject;
 					currentFish.SetActive(true);
 					Debug.Log(currentFish);
+					GameManager.singleton.AddTorsk(mostRecentFish);
 				}
 			}
 			
 		}
 		//mostRecentFish = Instantiate(GameManager.singleton.torsk,boat.transform.position+ new Vector3(0,1,0), boat.transform.rotation, boat.transform);
-		GameManager.singleton.AddTorsk(mostRecentFish);
 	}
-	public void PutEelInBasket(float amount)
+	public void PutEelInBasket(int amount)
 	{
 		amount = amount + GameManager.singleton.currentEelAmount;
 		GameObject currentFish;
@@ -292,16 +293,17 @@ public class PartnerAnimator : MonoBehaviour {
 					currentFish = t.gameObject;
 					currentFish.SetActive(true);
 					Debug.Log(currentFish);
+					GameManager.singleton.AddEel(currentFish);
 				}
 			}
 			
 		}
 		//mostRecentFish = Instantiate(GameManager.singleton.eel,boat.transform.position + new Vector3(0,1,0), boat.transform.rotation, boat.transform);
-		GameManager.singleton.AddEel(mostRecentFish);
+		
 	}
 	void ResetToolOnGuide()
 	{
-				GameManager.singleton.paddle.SetActive(true);
+		GameManager.singleton.paddle.SetActive(true);
 		GameManager.singleton.aniEelIron.SetActive(false);
 		GameManager.singleton.aniTorch.SetActive(false);
 	}

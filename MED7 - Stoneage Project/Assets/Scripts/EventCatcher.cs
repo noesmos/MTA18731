@@ -28,10 +28,10 @@ public class EventCatcher : MonoBehaviour {
 	void OnTriggerEnter(Collider other)
     {
 		
-		if(other.tag == "pillar1" ||other.tag == "pillar2" ||other.tag == "pillar3"||other.tag == "pillar4"||other.tag == "pillar5")
+		/*if(other.tag == "pillar1" ||other.tag == "pillar2" ||other.tag == "pillar3"||other.tag == "pillar4"||other.tag == "pillar5")
 		{
 			other.gameObject.SetActive(false);
-		}
+		}*/
 		//when you enter a fishing area
 		if(other.tag == "TorskArea" || other.tag == "EelArea" || other.tag == "FlatfishArea")
 		{
@@ -224,7 +224,6 @@ public class EventCatcher : MonoBehaviour {
 	{
 		canFish = false;
 			fishingArea = "";
-			Debug.Log("you are now out of fishing area");
 	}
 
 	public void startFishing(string tool)
@@ -265,11 +264,30 @@ public class EventCatcher : MonoBehaviour {
 
 	public void TradeFishForFlint()
 	{
-		Debug.Log("you want to trade");
-		if(GameManager.singleton.GetFishCount() >= 5)
+		Debug.Log("you want to trade" + GameManager.singleton.currentEelAmount);
+		if(GameManager.singleton.currentEelAmount >= 4)
 		{
 			Debug.Log("You have enough fish");
-			GameManager.singleton.RemoveAnyFish(5);
+			GameObject currentFish;
+
+			for (int i = 1; i < 5; i++)
+			{
+
+				Transform[] trans = GameObject.FindGameObjectWithTag("basket").GetComponentsInChildren<Transform>(true);
+				foreach (Transform t in trans) {
+					if (t.gameObject.name == "eel_Caught_0"+i) 
+					{
+						currentFish = t.gameObject;
+						currentFish.SetActive(false);
+						GameManager.singleton.currentEelAmount -= 1;
+						Debug.Log("ÅL: " + GameManager.singleton.currentEelAmount);
+					}
+				}
+				
+			}
+
+
+			//GameManager.singleton.RemoveAnyFish(5);
 			Instantiate(GameManager.singleton.flint,transform.position+ transform.up*2 - 1.5f*transform.forward, transform.rotation, transform);
 			hasFlint = true;
 			DisableTrading();
