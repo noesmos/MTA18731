@@ -79,6 +79,10 @@ public class playTimer : MonoBehaviour {
 			// change scene
 			Debug.Log("change scene");
 			//did not make it back in time
+			if (GameManager.singleton.GetFishCount() >= 7)
+			{
+				GameManager.singleton.GetComponent<EventCatcher>().CheckForEnding();
+			}
 			GameManager.singleton.PrepareForEndScene(
 				GameManager.singleton.partner.GetComponent<PartnerSpeech>().Outcome2Emergent, 
 				GameManager.singleton.boat.GetComponent<EventCatcher>().GetHasFlint());
