@@ -81,12 +81,15 @@ public class playTimer : MonoBehaviour {
 			//did not make it back in time
 			if (GameManager.singleton.GetFishCount() >= 7)
 			{
-				GameManager.singleton.GetComponent<EventCatcher>().CheckForEnding();
+				GameManager.singleton.boat.GetComponent<EventCatcher>().CheckForEnding();
 			}
-			GameManager.singleton.PrepareForEndScene(
-				GameManager.singleton.partner.GetComponent<PartnerSpeech>().Outcome2Emergent, 
-				GameManager.singleton.boat.GetComponent<EventCatcher>().GetHasFlint());
-			SceneManager.LoadScene("End Scene", LoadSceneMode.Single);
+			else
+			{
+				GameManager.singleton.PrepareForEndScene(
+					GameManager.singleton.partner.GetComponent<PartnerSpeech>().Outcome2Emergent, 
+					GameManager.singleton.boat.GetComponent<EventCatcher>().GetHasFlint());
+				SceneManager.LoadScene("End Scene", LoadSceneMode.Single);
+			}
 		}
 		if(!GameManager.singleton.Islinear)
 		{

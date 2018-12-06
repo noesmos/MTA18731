@@ -179,6 +179,7 @@ public class GameManager : MonoBehaviour {
                 else if(currentEelAmount-startEelAmount>=3)
                 {
                     partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(partner.GetComponent<PartnerSpeech>().AfterFlaringEel, "TAG TILBAGE TIL MØDDINGEN");
+                    isCountingEel=false;
                 }
             }
 
@@ -199,9 +200,10 @@ public class GameManager : MonoBehaviour {
                 {
                     partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(partner.GetComponent<PartnerSpeech>().CodOneMore, "FANG 1 TORSK");
                 }
-                else if(currentTorskAmount-startTorskAmount>=3)
+                else if(currentTorskAmount-startTorskAmount==3)
                 {
                     partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(partner.GetComponent<PartnerSpeech>().AfterCodCatch, " BYT FISK FOR FLINT");
+                    isCountingTorsk=false;
                 }
             }
         }

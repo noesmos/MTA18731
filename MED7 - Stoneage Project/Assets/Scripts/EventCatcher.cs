@@ -288,10 +288,11 @@ public class EventCatcher : MonoBehaviour {
 
 
 			//GameManager.singleton.RemoveAnyFish(5);
-			Instantiate(GameManager.singleton.flint,transform.position+ transform.up*2 - 1.5f*transform.forward, transform.rotation, transform);
+			
+			Instantiate(GameManager.singleton.flint,GameObject.FindGameObjectWithTag("basket").transform.position-1.5f*transform.forward, transform.rotation,GameObject.FindGameObjectWithTag("basket").transform);
 			hasFlint = true;
 			DisableTrading();
-			//Debug.Break();
+
 			if(GameManager.singleton.Islinear)
 			{
 				GameManager.singleton.partner.
