@@ -86,19 +86,23 @@ public class BoatControllerScript : MonoBehaviour {
 
 			if (Vector3.Distance(GameManager.singleton.currentPillar.transform.position, transform.position) > 150)
 			{
+				Debug.Log("FORKERT VEJ!");
 				float wrongWayAngle = Vector3.SignedAngle(transform.forward, new Vector3(GameManager.singleton.currentPillar.transform.position.x, 0, GameManager.singleton.currentPillar.transform.position.z) - transform.position, Vector3.up);
 				if(wrongWayAngle > 90)
 				{
 					// Right
+					GameManager.singleton.partner.GetComponent<PartnerAnimator>().paddleAnimation(false);
 					GameManager.singleton.partner.GetComponent<PartnerAnimator>().wrongWay(true);
 					GameManager.singleton.partner.GetComponent<PartnerAnimator>().pointRight(true);
 					GameManager.singleton.partner.GetComponent<PartnerAnimator>().pointLeft(false);
 				} else if (wrongWayAngle < -90) {
 					// Left
+					GameManager.singleton.partner.GetComponent<PartnerAnimator>().paddleAnimation(false);
 					GameManager.singleton.partner.GetComponent<PartnerAnimator>().wrongWay(true);
 					GameManager.singleton.partner.GetComponent<PartnerAnimator>().pointLeft(true);
 					GameManager.singleton.partner.GetComponent<PartnerAnimator>().pointRight(false);
 				} else {
+					GameManager.singleton.partner.GetComponent<PartnerAnimator>().paddleAnimation(true);
 					GameManager.singleton.partner.GetComponent<PartnerAnimator>().wrongWay(false);
 					GameManager.singleton.partner.GetComponent<PartnerAnimator>().pointLeft(false);
 					GameManager.singleton.partner.GetComponent<PartnerAnimator>().pointRight(false);
@@ -106,14 +110,13 @@ public class BoatControllerScript : MonoBehaviour {
 			
 			}
 
-			if((!GameManager.singleton.pointingAtInteractable) && 
-			GameManager.singleton.partner.GetComponent<PartnerAnimator>().anim.GetCurrentAnimatorStateInfo(0).IsTag("default") || 
-			GameManager.singleton.partner.GetComponent<PartnerAnimator>().anim.GetCurrentAnimatorStateInfo(0).IsTag("paddling") ||
-			GameManager.singleton.partner.GetComponent<PartnerAnimator>().anim.GetCurrentAnimatorStateInfo(0).IsTag("pointLeft") ||
-			GameManager.singleton.partner.GetComponent<PartnerAnimator>().anim.GetCurrentAnimatorStateInfo(0).IsTag("pointRight"))
+			if(!GameManager.singleton.pointingAtInteractable)
 			{
 
-				GetComponent<Rigidbody>().AddForce(transform.forward * speed * sinusoid*Time.deltaTime);
+				if (GameManager.singleton.partner.GetComponent<PartnerAnimator>().anim.GetCurrentAnimatorStateInfo(0).IsTag("default") || GameManager.singleton.partner.GetComponent<PartnerAnimator>().anim.GetCurrentAnimatorStateInfo(0).IsTag("paddling"))
+				{
+					GetComponent<Rigidbody>().AddForce(transform.forward * speed * sinusoid*Time.deltaTime);	
+				}
 
 				float rotationAngle = Vector3.Angle(transform.forward, Camera.main.transform.forward);
 
