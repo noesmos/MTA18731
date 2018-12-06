@@ -156,13 +156,19 @@ public class GvrReticlePointer : GvrBasePointer {
       ReticleInnerAngle = RETICLE_MIN_INNER_ANGLE + RETICLE_GROWTH_ANGLE;
       ReticleOuterAngle = RETICLE_MIN_OUTER_ANGLE + RETICLE_GROWTH_ANGLE;
 
+      try{
       GameManager.singleton.pointingAtInteractable = true;
+      }catch{}
+
 
     } else {
       ReticleInnerAngle = RETICLE_MIN_INNER_ANGLE;
       ReticleOuterAngle = RETICLE_MIN_OUTER_ANGLE;
 
-      GameManager.singleton.pointingAtInteractable = false;
+      try{
+          GameManager.singleton.pointingAtInteractable = false;
+      }catch{}
+
     }
     return true;
   }
