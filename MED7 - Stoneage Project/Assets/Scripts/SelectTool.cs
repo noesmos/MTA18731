@@ -35,8 +35,25 @@ PartnerAnimator PA;
 			Debug.Log("selected hook");
 			tool = tag;
 			//play animation
-			HideTool();
-			PA.HookAnimation();
+
+			if (GameManager.singleton.boat.GetComponent<EventCatcher>().fishingArea == "TorskArea")
+			{
+				HideTool();
+				PA.HookAnimation();
+			}
+			else if(GameManager.singleton.boat.GetComponent<EventCatcher>().fishingArea == "")
+			{
+				//no fish here
+				GameManager.singleton.partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(
+					GameManager.singleton.partner.GetComponent<PartnerSpeech>().NotEnoughFishHere);
+			}
+			else
+			{
+				//wrong tool
+				GameManager.singleton.partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(
+					GameManager.singleton.partner.GetComponent<PartnerSpeech>().NoHook4CodTryIron);
+			}
+
 			//wait for animaion to end to show tool again
 			//ShowTool();
 
@@ -48,9 +65,24 @@ PartnerAnimator PA;
 			Debug.Log("selected eeliron");
 			tool = tag;
 			//play animation
-			HideTool();
-			PA.EelironAnimation();
-			
+
+			if (GameManager.singleton.boat.GetComponent<EventCatcher>().fishingArea == "EelArea" || GameManager.singleton.boat.GetComponent<EventCatcher>().fishingArea == "FlatfishArea"	)
+			{
+				HideTool();
+				PA.EelironAnimation();
+			}
+			else if(GameManager.singleton.boat.GetComponent<EventCatcher>().fishingArea == "")
+			{
+				//no fish here
+				GameManager.singleton.partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(
+					GameManager.singleton.partner.GetComponent<PartnerSpeech>().NotEnoughFishHere);
+			}
+			else
+			{
+				//wrong tool
+				GameManager.singleton.partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(
+					GameManager.singleton.partner.GetComponent<PartnerSpeech>().NoIron4CodTryHook);
+			}
 			//wait for animaion to end to show tool again
 			//ShowTool();
 			

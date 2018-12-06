@@ -9,6 +9,8 @@ public class BoatControllerScript : MonoBehaviour {
 	public float rotationSpeed = 0.1f;
 	public Collider[] ignoreCollision;
 
+	bool voiceLineReady = true;
+
 	float verticalInput;
 	float horizontalInput;
 	float steerFactor;
@@ -95,13 +97,27 @@ public class BoatControllerScript : MonoBehaviour {
 					GameManager.singleton.partner.GetComponent<PartnerAnimator>().wrongWay(true);
 					GameManager.singleton.partner.GetComponent<PartnerAnimator>().pointRight(true);
 					GameManager.singleton.partner.GetComponent<PartnerAnimator>().pointLeft(false);
+					if(voiceLineReady)
+					{
+						voiceLineReady = false;
+						GameManager.singleton.partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(
+							GameManager.singleton.partner.GetComponent<PartnerSpeech>().ThisWay1,false);
+					}
+
 				} else if (wrongWayAngle < -90) {
 					// Left
 					GameManager.singleton.partner.GetComponent<PartnerAnimator>().paddleAnimation(false);
 					GameManager.singleton.partner.GetComponent<PartnerAnimator>().wrongWay(true);
 					GameManager.singleton.partner.GetComponent<PartnerAnimator>().pointLeft(true);
 					GameManager.singleton.partner.GetComponent<PartnerAnimator>().pointRight(false);
+					if(voiceLineReady)
+					{
+						voiceLineReady = false;
+						GameManager.singleton.partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(
+							GameManager.singleton.partner.GetComponent<PartnerSpeech>().ThisWay2,false);
+					}
 				} else {
+					voiceLineReady = true;
 					GameManager.singleton.partner.GetComponent<PartnerAnimator>().paddleAnimation(true);
 					GameManager.singleton.partner.GetComponent<PartnerAnimator>().wrongWay(false);
 					GameManager.singleton.partner.GetComponent<PartnerAnimator>().pointLeft(false);

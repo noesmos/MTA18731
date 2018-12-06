@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class EventCatcher : MonoBehaviour {
 
 	bool canFish;
-	string fishingArea;
+	public string fishingArea;
 
 	bool firstTimeInTorskArea = true;
 	bool firstTimeInEelArea = true;
@@ -33,6 +33,12 @@ public class EventCatcher : MonoBehaviour {
 			other.gameObject.SetActive(false);
 		}*/
 		//when you enter a fishing area
+		if(other.tag == "turnAround")
+		{
+			GameManager.singleton.partner.GetComponent<PartnerSpeech>().PartnerSaysSomething(
+				GameManager.singleton.partner.GetComponent<PartnerSpeech>().NoFurther
+			);
+		}
 		if(other.tag == "TorskArea" || other.tag == "EelArea" || other.tag == "FlatfishArea")
 		{
 			canFish = true;
@@ -231,13 +237,21 @@ public class EventCatcher : MonoBehaviour {
 		Debug.Log("trying to fish");
 		if(canFish)
 		{
-			if(tool == "hook" && fishingArea == "TorskArea")
+			if(fishingArea == "TorskArea")
 			{
-				Debug.Log("caugth a torsk");
-				//instatiate a fish in the boay
-				//Instantiate(torsk,transform.position, transform.rotation);
-				//remove a fish from the ocean
-				fishingAreaObject.GetComponent<FishContent>().RemoveFish();
+				if (tool == "hook")
+				{
+					Debug.Log("caugth a torsk");
+					//instatiate a fish in the boay
+					//Instantiate(torsk,transform.position, transform.rotation);
+					//remove a fish from the ocean
+					fishingAreaObject.GetComponent<FishContent>().RemoveFish();
+				}
+				else
+				{
+
+				}
+
 			}
 			if(tool == "eeliron" && fishingArea == "EelArea")
 			{
@@ -323,7 +337,6 @@ public class EventCatcher : MonoBehaviour {
     {
         return fishingAreaObject;
     }
-
 
 
 }

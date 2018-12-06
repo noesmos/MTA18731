@@ -27,6 +27,9 @@ public class playTimer : MonoBehaviour {
 	bool oneMinLeft=true;
 	bool twoMinLeft=true;
 
+	bool sixMinLeft=true;
+	bool fourMinLeft=true;
+
 
 	// Use this for initialization
 	void Start () {
@@ -93,8 +96,26 @@ public class playTimer : MonoBehaviour {
 		}
 		if(!GameManager.singleton.Islinear)
 		{
+			
+			if(timeSpent <=0.75 && sixMinLeft)
+			{
+				sixMinLeft=false;
+				GameManager.singleton.partner.
+					GetComponent<PartnerSpeech>().PartnerSaysSomething(
+					GameManager.singleton.partner.GetComponent<PartnerSpeech>().WeNeedFish);
+				GameManager.singleton.partner.
+					GetComponent<PartnerSpeech>().PartnerSaysSomething(
+					GameManager.singleton.partner.GetComponent<PartnerSpeech>().StartofGameEmergent);
+			}
+			if(timeSpent <=0.5 && fourMinLeft)
+			{
+				fourMinLeft=false;
+				GameManager.singleton.partner.
+					GetComponent<PartnerSpeech>().PartnerSaysSomething(
+					GameManager.singleton.partner.GetComponent<PartnerSpeech>().DarkSoon);
+			}
 			//when there is two minutes left
-			if(timeSpent <=0.4 && twoMinLeft )
+			if(timeSpent <=0.4 && twoMinLeft)
 			{
 				twoMinLeft=false;
 				GameManager.singleton.partner.
@@ -102,7 +123,7 @@ public class playTimer : MonoBehaviour {
 					GameManager.singleton.partner.GetComponent<PartnerSpeech>().Time2MinLeft);
 				GameManager.singleton.midden.GetComponent<Collider>().enabled = true;
 			}
-			//when there is onr minutes left
+			//when there is one minutes left
 			if(timeSpent <=0.2 && oneMinLeft)
 			{
 				oneMinLeft =  false;

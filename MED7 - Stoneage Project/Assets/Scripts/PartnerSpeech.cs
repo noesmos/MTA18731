@@ -61,6 +61,24 @@ public class PartnerSpeech : MonoBehaviour {
 	public AudioClip ThisWay1;
 	public AudioClip ThisWay2;
 
+	//new sounds
+	[Header("new sounds")]
+	public AudioClip AnotherCod;
+	public AudioClip AnotherEel;
+	public AudioClip AnotherFlatfish;
+	public AudioClip Catch1Eel;
+	public AudioClip Catch2Eel;
+	public AudioClip Catch3Eel;
+	public AudioClip DarkSoon;
+	public AudioClip GoSomewhereElse;
+	public AudioClip NoFurther;
+	public AudioClip NoIron4CodTryHook;
+	public AudioClip NoHook4CodTryIron;
+	public AudioClip NotEnoughFishHere;
+	public AudioClip WeNeedFish;
+
+
+
 	[Header(" sounds")]
 
 	public Text speech;
@@ -195,6 +213,26 @@ public class PartnerSpeech : MonoBehaviour {
 		}
 
 	}
+	public void PartnerSaysSomething(AudioClip clip, string writtenLine, bool animation)
+	{
+		if(audio.isPlaying)
+		{
+			queuedAudio.Add(clip);
+			queuedText.Add(writtenLine);
+		}
+		else
+		{
+			if (animation)
+			{
+				GetComponent<PartnerAnimator>().StartTalking();
+			}
+			audio.clip = clip;
+			speech.text = writtenLine;
+			audio.Play();
+			
+		}
+
+	}
 	public void PartnerSaysSomething(AudioClip clip)
 	{
 		if(audio.isPlaying)
@@ -204,6 +242,23 @@ public class PartnerSpeech : MonoBehaviour {
 		else
 		{
 			GetComponent<PartnerAnimator>().StartTalking();
+			audio.clip = clip;
+			audio.Play();
+		}
+
+	}
+	public void PartnerSaysSomething(AudioClip clip, bool animation)
+	{
+		if(audio.isPlaying)
+		{
+			queuedAudio.Add(clip);
+		}
+		else
+		{
+			if (animation)
+			{
+				GetComponent<PartnerAnimator>().StartTalking();
+			}
 			audio.clip = clip;
 			audio.Play();
 		}

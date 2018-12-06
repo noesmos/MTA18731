@@ -102,6 +102,7 @@ public class PartnerAnimator : MonoBehaviour {
 	public void noCatch()
 	{
 		anim.SetTrigger("noCatch");
+
 	}
 	public void pointLeft(bool state)
 	{
@@ -222,6 +223,10 @@ public class PartnerAnimator : MonoBehaviour {
 			firstTimeFlatfish = false;
 			GetComponent<PartnerSpeech>().PartnerSaysSomething(GetComponent<PartnerSpeech>().FirstTimeFlatFish);
 		}
+		else if(!GameManager.singleton.Islinear && !firstTimeFlatfish && !GameManager.singleton.tribeBoat.GetComponent<TribeController>().GetFollowPlayer())
+		{
+			GetComponent<PartnerSpeech>().PartnerSaysSomething(GetComponent<PartnerSpeech>().AnotherFlatfish);
+		}
 		//instatiate a fish in the boay
 		for (int i = 1; i < amount+1; i++)
 		{
@@ -257,6 +262,10 @@ public class PartnerAnimator : MonoBehaviour {
 			firstTimeCod = false;
 			GetComponent<PartnerSpeech>().PartnerSaysSomething(GetComponent<PartnerSpeech>().FirstTimeCod);
 		}
+		else if(!GameManager.singleton.Islinear && !firstTimeCod  && !GameManager.singleton.tribeBoat.GetComponent<TribeController>().GetFollowPlayer())
+		{
+			GetComponent<PartnerSpeech>().PartnerSaysSomething(GetComponent<PartnerSpeech>().AnotherCod);
+		}
 		//instatiate a fish in the boay
 		for (int i = 1; i < amount+1; i++)
 		{
@@ -290,6 +299,10 @@ public class PartnerAnimator : MonoBehaviour {
 		{
 			firstTimeEel = false;
 			GetComponent<PartnerSpeech>().PartnerSaysSomething(GetComponent<PartnerSpeech>().FirstTimeEel);
+		}
+		else if(!GameManager.singleton.Islinear && !firstTimeEel  && !GameManager.singleton.tribeBoat.GetComponent<TribeController>().GetFollowPlayer())
+		{
+			GetComponent<PartnerSpeech>().PartnerSaysSomething(GetComponent<PartnerSpeech>().AnotherEel);
 		}
 		//instatiate a fish in the boay
 		for (int i = 1; i < amount+1; i++)

@@ -33,6 +33,7 @@ TagManager:
   - FlatfishArea
   - pelicanTrigger
   - basket
+  - turnAround
   layers:
   - Default
   - TransparentFX
