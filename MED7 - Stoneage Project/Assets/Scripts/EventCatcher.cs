@@ -156,7 +156,7 @@ public class EventCatcher : MonoBehaviour {
 	void OnTriggerExit(Collider other)
     {
         //when you exit a fishing area, you are set to not be able to fish anymore
-        if(other.tag == "TorskArea" || other.tag == "EelArea")
+        if(other.tag == "TorskArea" || other.tag == "EelArea" || other.tag == "FlatfishArea")
         {
             ExitArea();
         }
