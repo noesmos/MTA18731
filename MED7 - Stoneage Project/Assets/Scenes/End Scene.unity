@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0040577445, g: 0.0002217863, b: 0.000000055642886,
+  m_IndirectSpecularColor: {r: 0.004057748, g: 0.00022178683, b: 0.000000055642886,
     a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -1241,6 +1241,30 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 107.90101
       objectReference: {fileID: 0}
+    - target: {fileID: 13700000, guid: e8b9e35346f07b448a48bd297da4b4c4, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 13700000, guid: e8b9e35346f07b448a48bd297da4b4c4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 13700000, guid: e8b9e35346f07b448a48bd297da4b4c4, type: 3}
+      propertyPath: m_SkinnedMotionVectors
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 13700000, guid: e8b9e35346f07b448a48bd297da4b4c4, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 13700000, guid: e8b9e35346f07b448a48bd297da4b4c4, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 13700000, guid: e8b9e35346f07b448a48bd297da4b4c4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100006, guid: f4ebe506703fb1345868a07a5a21bd21, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8b9e35346f07b448a48bd297da4b4c4, type: 3}
   m_IsPrefabAsset: 0
@@ -1473,6 +1497,14 @@ Prefab:
     - target: {fileID: 400148, guid: 4f245d43d97f9c740825df535bf246b7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -28.908
+      objectReference: {fileID: 0}
+    - target: {fileID: 13700000, guid: 4f245d43d97f9c740825df535bf246b7, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 13700000, guid: 4f245d43d97f9c740825df535bf246b7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f245d43d97f9c740825df535bf246b7, type: 3}
@@ -1931,6 +1963,18 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 13700000, guid: 4e32a37858f8cb7479f440edf8251ae5, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 13700000, guid: 4e32a37858f8cb7479f440edf8251ae5, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 13700000, guid: 4e32a37858f8cb7479f440edf8251ae5, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e32a37858f8cb7479f440edf8251ae5, type: 3}
   m_IsPrefabAsset: 0
@@ -2087,7 +2131,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1216423893}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 072069712d542c34da2233aba13a9821, type: 3}
+  m_Script: {fileID: 11500000, guid: 1610b7e7d5eabd84597d77297ad66f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   totalTime: 10
@@ -2903,16 +2947,16 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 0.837455, b: 0.3726415, a: 1}
-  m_Intensity: 1
-  m_Range: 13.752808
+  m_Color: {r: 1, g: 0.7048075, b: 0.37254906, a: 1}
+  m_Intensity: 2
+  m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.8
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -2938,7 +2982,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1778524285}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -90.8, y: 3.446814, z: 162.582}
+  m_LocalPosition: {x: -90.8, y: 4.23, z: 162.582}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

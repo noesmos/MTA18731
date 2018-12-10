@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.14798239, g: 0.1441625, b: 0.13893896, a: 1}
+  m_IndirectSpecularColor: {r: 0.15135586, g: 0.14741412, b: 0.14202136, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1408,7 +1408,7 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 83509190}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1451,8 +1451,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 83509190}
   m_LocalRotation: {x: -0, y: 0.32833642, z: -0, w: 0.9445609}
-  m_LocalPosition: {x: -100.6, y: -9.7, z: 149.3}
-  m_LocalScale: {x: 89.1606, y: 12.564015, z: 89.18428}
+  m_LocalPosition: {x: -95.7, y: -9.7, z: 139.1}
+  m_LocalScale: {x: 110.87155, y: 12.564015, z: 94.4965}
   m_Children: []
   m_Father: {fileID: 2001498335}
   m_RootOrder: 5
@@ -1655,10 +1655,10 @@ Terrain:
   m_Enabled: 1
   serializedVersion: 3
   m_TerrainData: {fileID: 15600000, guid: eafe2fe12b5e0ef4cb6729f1722139c9, type: 2}
-  m_TreeDistance: 2000
+  m_TreeDistance: 5000
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 5
-  m_TreeMaximumFullLODCount: 70
+  m_TreeMaximumFullLODCount: 50
   m_DetailObjectDistance: 80
   m_DetailObjectDensity: 1
   m_HeightmapPixelError: 5
@@ -16227,7 +16227,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1008707521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25948,7 +25948,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startValue: -13
   endValue: 24
-  totalPlayTime: 480
+  totalPlayTime: 100
   skyBox: {fileID: 2100000, guid: 9ba05f538ee36044da5cd2a4f14a8b18, type: 2}
   skyboxAngle: 0
   skyboxExposure: 0

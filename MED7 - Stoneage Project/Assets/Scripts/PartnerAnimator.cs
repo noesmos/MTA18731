@@ -190,14 +190,14 @@ public class PartnerAnimator : MonoBehaviour {
 			Debug.Log("putting fish in basket");
 			//PutEelInBasket();
 			PutEelInBasket(4,true);
-			PutEelInBasket(4, false);
+			PutEelInBasket(4,false);
 			PutEelInBasket(4,false);
 			PutEelInBasket(4,false);
 			
 			Debug.Log("putting fish in basket");
 			//PutEelInBasket();
 			PutFlatFishInBasket(2,true);
-			PutFlatFishInBasket(2, false);
+			PutFlatFishInBasket(2,false);
 			
 			if(GameManager.singleton.Islinear)
 			{

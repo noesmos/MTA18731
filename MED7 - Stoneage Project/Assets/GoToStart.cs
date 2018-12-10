@@ -5,8 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GoToStart : MonoBehaviour {
 
-	public float totalTime;
-
+	public float totalTime =10;
 	// Use this for initialization
 	void Start () {
 		
@@ -14,15 +13,13 @@ public class GoToStart : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		totalTime = totalTime-Time.deltaTime;
+		totalTime = totalTime - Time.deltaTime;
 
-		if(totalTime <0)
+		if(totalTime < 0 && Input.GetButtonDown("Fire1"))
 		{
-			if( Input.GetButtonDown("Fire1"))
-			{
-				SceneManager.LoadScene("start", LoadSceneMode.Single);
-			}
+			Debug.Log("go to starrt");
+			Destroy(GameObject.Find("Game Manager"));
+			SceneManager.LoadScene("start", LoadSceneMode.Single);
 		}
-
 	}
 }
