@@ -200,8 +200,11 @@ public class PartnerSpeech : MonoBehaviour {
 	{
 		if(audio.isPlaying)
 		{
-			queuedAudio.Add(clip);
-			queuedText.Add(writtenLine);
+			if(!queuedAudio.Contains(clip) && audio.clip.name != clip.name)
+			{
+				queuedAudio.Add(clip);
+				queuedText.Add(writtenLine);
+			}
 		}
 		else
 		{
@@ -217,8 +220,13 @@ public class PartnerSpeech : MonoBehaviour {
 	{
 		if(audio.isPlaying)
 		{
-			queuedAudio.Add(clip);
-			queuedText.Add(writtenLine);
+			if(!queuedAudio.Contains(clip) && audio.clip.name != clip.name)
+			{
+				queuedAudio.Add(clip);
+				queuedText.Add(writtenLine);
+								Debug.Log(audio.clip.name + " audio - clip " + clip.name);
+			}
+
 		}
 		else
 		{
@@ -237,7 +245,12 @@ public class PartnerSpeech : MonoBehaviour {
 	{
 		if(audio.isPlaying)
 		{
-			queuedAudio.Add(clip);
+			if(!queuedAudio.Contains(clip) && audio.clip.name != clip.name)
+			{
+				queuedAudio.Add(clip);
+				Debug.Log(audio.clip.name + " audio - clip " + clip.name);
+			}
+
 		}
 		else
 		{
@@ -251,7 +264,11 @@ public class PartnerSpeech : MonoBehaviour {
 	{
 		if(audio.isPlaying)
 		{
-			queuedAudio.Add(clip);
+			if(!queuedAudio.Contains(clip) && audio.clip.name != clip.name)
+			{
+				queuedAudio.Add(clip);
+				Debug.Log(audio.clip.name + " audio1 - clip " + clip.name);
+			}
 		}
 		else
 		{

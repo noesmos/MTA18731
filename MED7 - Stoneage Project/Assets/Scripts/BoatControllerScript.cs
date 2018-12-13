@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent (typeof (FloatingObject))]
 public class BoatControllerScript : MonoBehaviour {
 
 	public float speed = 15f;
@@ -80,7 +79,7 @@ public class BoatControllerScript : MonoBehaviour {
 		
 		if(Input.GetButton("Fire1") && !outOfBounds)
 		{
-			float sinusoid = (Mathf.Sin(Time.time * 2.175f) + 1) / 2;
+			float sinusoid = (Mathf.Sin(Time.time) + 1) / 2;
 			if(sinusoid < 0.2f)
 			{
 				sinusoid = 0.2f;
@@ -131,7 +130,7 @@ public class BoatControllerScript : MonoBehaviour {
 
 				if (GameManager.singleton.partner.GetComponent<PartnerAnimator>().anim.GetCurrentAnimatorStateInfo(0).IsTag("default") || GameManager.singleton.partner.GetComponent<PartnerAnimator>().anim.GetCurrentAnimatorStateInfo(0).IsTag("paddling"))
 				{
-					GetComponent<Rigidbody>().AddForce(transform.forward * speed * sinusoid*Time.deltaTime);	
+					GetComponent<Rigidbody>().AddForce(transform.forward * speed * sinusoid * Time.deltaTime);	
 				}
 
 				float rotationAngle = Vector3.Angle(transform.forward, Camera.main.transform.forward);

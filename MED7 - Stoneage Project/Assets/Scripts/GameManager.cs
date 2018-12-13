@@ -156,7 +156,6 @@ public class GameManager : MonoBehaviour {
         //Update is called every frame.
         void Update()
         {
-            Debug.Log(currentEelAmount);
         }
 
         public void AddEel(GameObject eel)
